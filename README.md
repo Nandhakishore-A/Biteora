@@ -1,41 +1,41 @@
-# 🍔 FeastDash — Full-Stack Food Ordering & Delivery Management Platform
+# 🍔 Biteora — Full-Stack Food Ordering & Delivery Management Platform
 
-[![Live Backend](https://img.shields.io/badge/Vercel-Backend_API-black?logo=vercel)](https://feastdash-backend.vercel.app/api/health)
-[![Live Storefront](https://img.shields.io/badge/Vercel-Customer_App-black?logo=vercel)](https://feastdash-app.vercel.app)
-[![Live Admin](https://img.shields.io/badge/Vercel-Admin_Dashboard-black?logo=vercel)](https://feast-dash-livid.vercel.app)
-[![API Docs](https://img.shields.io/badge/Swagger-API_Docs-85EA2D?logo=swagger&logoColor=black)](https://feastdash-backend.vercel.app/api-docs)
+[![Live Backend](https://img.shields.io/badge/Vercel-Backend_API-black?logo=vercel)](https://biteora-backend.vercel.app/api/health)
+[![Live Storefront](https://img.shields.io/badge/Vercel-Customer_App-black?logo=vercel)](https://biteora-app.vercel.app)
+[![Live Admin](https://img.shields.io/badge/Vercel-Admin_Dashboard-black?logo=vercel)](https://biteora-admin.vercel.app)
+[![API Docs](https://img.shields.io/badge/Swagger-API_Docs-85EA2D?logo=swagger&logoColor=black)](https://biteora-backend.vercel.app/api-docs)
 
 ### 🚀 Live Production Links
-- 🌐 **Customer Storefront:** [https://feastdash-app.vercel.app/](https://feastdash-app.vercel.app/)
-- 🛠️ **Admin Management Dashboard:** [https://feast-dash-livid.vercel.app/](https://feast-dash-livid.vercel.app/) *(Default Admin Password: `FeastDashAdmin2026!`)*
-- 🔌 **Backend REST API:** [https://feastdash-backend.vercel.app/](https://feastdash-backend.vercel.app/)
-- 📖 **Interactive Swagger / OpenAPI Docs:** [https://feastdash-backend.vercel.app/api-docs](https://feastdash-backend.vercel.app/api-docs)
-- 🩺 **Real-time Health Check:** [https://feastdash-backend.vercel.app/api/health](https://feastdash-backend.vercel.app/api/health)
+- 🌐 **Customer Storefront:** [https://biteora-app.vercel.app/](https://biteora-app.vercel.app/)
+- 🛠️ **Admin Management Dashboard:** [https://biteora-admin.vercel.app/](https://biteora-admin.vercel.app/) *(Default Admin Password: `BiteoraAdmin2026!`)*
+- 🔌 **Backend REST API:** [https://biteora-backend.vercel.app/](https://biteora-backend.vercel.app/)
+- 📖 **Interactive Swagger / OpenAPI Docs:** [https://biteora-backend.vercel.app/api-docs](https://biteora-backend.vercel.app/api-docs)
+- 🩺 **Real-time Health Check:** [https://biteora-backend.vercel.app/api/health](https://biteora-backend.vercel.app/api/health)
 
-A high-performance, industry-ready food delivery platform built with the **MERN** stack (MongoDB Atlas, Express 5, React 19, Node.js 24). FeastDash features a customer ordering application with live search and order progress tracking, a restaurant admin management dashboard with inventory control and payment visibility, and a secured serverless REST API backend on Vercel with Stripe checkout, cryptographic webhooks, JWT authentication, and Cloudinary cloud image hosting.
+A high-performance, industry-ready food delivery platform built with the **MERN** stack (MongoDB Atlas, Express 5, React 19, Node.js 24). Biteora features a customer ordering application with live search and order progress tracking, a restaurant admin management dashboard with inventory control and payment visibility, and a secured serverless REST API backend on Vercel with Stripe checkout, cryptographic webhooks, JWT authentication, and Cloudinary cloud image hosting.
 
 ---
 
 ## 📸 Application Previews
 
 ### Customer Storefront & Catalog
-![FeastDash Customer Storefront](docs/screenshots/storefront.png)
+![Biteora Customer Storefront](docs/screenshots/storefront.png)
 
 ### Restaurant Admin Management Dashboard
-![FeastDash Admin Dashboard](docs/screenshots/admin_dashboard.png)
+![Biteora Admin Dashboard](docs/screenshots/admin_dashboard.png)
 
 ### Live Backend REST API Status
-![FeastDash Backend API Running](docs/screenshots/backend_api.png)
+![Biteora Backend API Running](docs/screenshots/backend_api.png)
 
 ### Swagger / OpenAPI 3.0 Interactive Documentation
-![FeastDash Interactive API Docs](docs/screenshots/api_docs.png)
+![Biteora Interactive API Docs](docs/screenshots/api_docs.png)
 
 ---
 
 ## 📐 Architecture
 
 ```
-FeastDash/
+Biteora/
 ├── frontend/               # Customer-facing React 19 SPA (Vite 7)
 │   ├── src/
 │   │   ├── Components/     # Navbar, FoodDisplay (live search), LoginPopup, etc.
@@ -67,7 +67,7 @@ FeastDash/
 - 🛡️ **Server-Side Price Integrity**: All order totals, item prices, and delivery charges are computed strictly using trusted database records from `foodModel`. Client-tampered prices in HTTP payloads are completely ignored.
 - 💳 **Cryptographic Stripe Webhooks**: Secure `POST /api/order/webhook` endpoint with HMAC SHA-256 signature verification (`stripe.webhooks.constructEvent`). Customer carts are preserved until payments are confirmed.
 - 🔒 **Role-Based Admin Protection**: Endpoints for adding, editing, and deleting menu dishes (`/api/food/add`, `/api/food/:id`) are strictly protected with JWT admin authorization middleware.
-- ☁️ **Cloudinary Media Pipeline**: Custom stream upload buffering directly into `mern_stack_project_storage/FeastDash`, with tracking of `cloudinaryPublicId` for clean cloud asset deletion.
+- ☁️ **Cloudinary Media Pipeline**: Custom stream upload buffering directly into `mern_stack_project_storage/Biteora`, with tracking of `cloudinaryPublicId` for clean cloud asset deletion.
 - 🔍 **Interactive Live Search**: Instant client-side search across dishes, ingredients, and categories on the customer storefront.
 - 📊 **Order Pipeline Stepper**: Real-time visual tracking (`Confirmed` ➔ `Preparing` ➔ `Out for Delivery` ➔ `Delivered`) on customer order history.
 - 💼 **Admin Payment Badging**: Clear **✓ PAID** and **⏳ UNPAID** status badges, order timestamps, and filter tabs on the admin dashboard.
@@ -100,25 +100,25 @@ FeastDash/
 
 ```env
 PORT=4000
-MONGODB_URI=mongodb+srv://<user>:<password>@cluster0.mongodb.net/feastdash?retryWrites=true&w=majority
+MONGODB_URI=mongodb+srv://<user>:<password>@cluster0.mongodb.net/biteora?retryWrites=true&w=majority
 JWT_SECRET=your_long_random_jwt_secret
 ADMIN_SECRET_KEY=your_long_random_admin_secret
 ADMIN_PASSWORD=your_admin_login_password
 STRIPE_SECRET_KEY=sk_test_your_stripe_secret
 STRIPE_WEBHOOK_SECRET=whsec_your_stripe_webhook_secret
-FRONTEND_URL=https://feastdash-app.vercel.app
-ADMIN_URL=https://feast-dash-livid.vercel.app
+FRONTEND_URL=https://biteora-app.vercel.app
+ADMIN_URL=https://biteora-admin.vercel.app
 MAX_UPLOAD_SIZE_BYTES=2097152
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
-CLOUDINARY_FOLDER=mern_stack_project_storage/FeastDash
+CLOUDINARY_FOLDER=mern_stack_project_storage/Biteora
 ```
 
 ### Customer Frontend (`frontend/.env`) & Admin (`admin/.env`)
 
 ```env
-VITE_API_URL=https://feastdash-backend.vercel.app
+VITE_API_URL=https://biteora-backend.vercel.app
 ```
 
 ---
@@ -134,7 +134,7 @@ npm test
 
 Expected output:
 ```
-▶ FeastDash API Automated Verification Suite
+▶ Biteora API Automated Verification Suite
   ✔ Health check endpoint returns status 200 and connected DB
   ✔ User registration succeeds and returns valid JWT token
   ✔ User login succeeds with correct credentials
@@ -142,7 +142,7 @@ Expected output:
   ✔ Unauthenticated menu addition is strictly rejected with HTTP 401
   ✔ Server-side price verification and order creation
   ✔ Catalog listing returns dishes array
-✔ FeastDash API Automated Verification Suite (7 passed, 0 failed)
+✔ Biteora API Automated Verification Suite (7 passed, 0 failed)
 ```
 
 ---
@@ -152,8 +152,8 @@ Expected output:
 ### 1. Clone & Configure
 
 ```bash
-git clone https://github.com/karthikeyantoff/FeastDash.git
-cd FeastDash
+git clone https://github.com/karthikeyantoff/Biteora.git
+cd Biteora
 ```
 
 ### 2. Install Dependencies
@@ -188,25 +188,25 @@ All three applications are continuously deployed on **Vercel** via GitHub integr
 ### 1. Backend REST API (`backend/`)
 - **Vercel Root Directory:** `backend`
 - **Builder:** `@vercel/node` configured in [`backend/vercel.json`](backend/vercel.json)
-- **Production URL:** [https://feastdash-backend.vercel.app/](https://feastdash-backend.vercel.app/)
+- **Production URL:** [https://biteora-backend.vercel.app/](https://biteora-backend.vercel.app/)
 - **Environment Variables:** `MONGODB_URI`, `JWT_SECRET`, `ADMIN_SECRET_KEY`, `ADMIN_PASSWORD`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`, `CLOUDINARY_FOLDER`, `FRONTEND_URL`, `ADMIN_URL`.
 
 ### 2. Customer Frontend (`frontend/`)
 - **Vercel Root Directory:** `frontend`
 - **Framework Preset:** `Vite`
-- **Production URL:** [https://feastdash-app.vercel.app/](https://feastdash-app.vercel.app/)
-- **Environment Variable:** `VITE_API_URL = https://feastdash-backend.vercel.app`
+- **Production URL:** [https://biteora-app.vercel.app/](https://biteora-app.vercel.app/)
+- **Environment Variable:** `VITE_API_URL = https://biteora-backend.vercel.app`
 
 ### 3. Admin Management Dashboard (`admin/`)
 - **Vercel Root Directory:** `admin`
 - **Framework Preset:** `Vite`
-- **Production URL:** [https://feast-dash-livid.vercel.app/](https://feast-dash-livid.vercel.app/)
-- **Environment Variable:** `VITE_API_URL = https://feastdash-backend.vercel.app`
+- **Production URL:** [https://biteora-admin.vercel.app/](https://biteora-admin.vercel.app/)
+- **Environment Variable:** `VITE_API_URL = https://biteora-backend.vercel.app`
 
 ---
 
 ## 👤 Author & Attribution
 
 - **Forward Deployed Engineer:** [Karthikeyan](https://github.com/karthikeyantoff) (`karthikeyantoff`)
-- **Original Starter Codebase Attribution:** Based on an open-source project by Maulik Gupta, customized, security-hardened, and extended into FeastDash.
+- **Original Starter Codebase Attribution:** Based on an open-source project by Maulik Gupta, customized, security-hardened, and extended into Biteora.
 - **License:** ISC

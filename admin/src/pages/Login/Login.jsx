@@ -41,7 +41,7 @@ const Login = ({ url, onLoginSuccess }) => {
     <div className="login-container">
       <div className="login-shell glass-panel">
         <section className="login-marketing">
-          <p className="eyebrow">FeastDash Admin</p>
+          <p className="eyebrow">Biteora Admin</p>
           <h1>Restaurant operations, tuned for speed.</h1>
           <p>
             Update dishes, review orders, and keep the storefront aligned from a focused dashboard.

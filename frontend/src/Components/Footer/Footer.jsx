@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="footer-inner">
         <div className="footer-grid">
           <div className="footer-brand">
-              <span className="footer-logo">Feast<span className="gradient-text">Dash</span></span>
+              <span className="footer-logo">Bite<span className="gradient-text">ora</span></span>
               <p className="footer-tagline">Your favorite food delivery app — bringing delicious meals right to your doorstep, fast and fresh.</p>
               <div className="footer-socials">
                 <a href="#" className="social-link" aria-label="Facebook">
@@ -39,12 +39,12 @@ const Footer = () => {
               <h3>Get In Touch</h3>
               <ul>
                   <li><a href="tel:+911234567890">+91 1234567890</a></li>
-                  <li><a href="mailto:contact@feastdash.com">contact@feastdash.com</a></li>
+                  <li><a href="mailto:contact@biteora.com">contact@biteora.com</a></li>
               </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <p>© 2026 FeastDash. All rights reserved.</p>
+          <p>© 2026 Biteora. All rights reserved.</p>
         </div>
       </div>
     </footer>

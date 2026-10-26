@@ -8,7 +8,7 @@ export const adminAuthMiddleware = (req, res, next) => {
         token = req.headers.authorization.split(" ")[1];
     }
 
-    const adminSecret = process.env.ADMIN_SECRET_KEY || "feastdash_admin_secret_key_default";
+    const adminSecret = process.env.ADMIN_SECRET_KEY || "biteora_admin_secret_key_default";
 
     if (!token) {
         return res.status(401).json({ success: false, message: "Admin authorization denied: No token provided" });

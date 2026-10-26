@@ -71,7 +71,7 @@ const MyOrders = () => {
             <span style={{ fontSize: "3rem" }}>🍱</span>
             <h3 style={{ marginTop: "1rem", color: "#fff" }}>No orders placed yet</h3>
             <p style={{ color: "rgba(255, 255, 255, 0.6)", marginTop: "0.5rem" }}>
-              Explore the FeastDash menu and order delicious food delivered fresh!
+              Explore the Biteora menu and order delicious food delivered fresh!
             </p>
             <button
               className="btn-gradient"

@@ -54,7 +54,7 @@ const LoginPopup = ({ setShowLogin }) => {
             <p className="login-header-sub">
               {currState === "Login" 
                 ? "Sign in to continue ordering" 
-                : "Join FeastDash for delicious food"}
+                : "Join Biteora for delicious food"}
             </p>
             <button type="button" className="login-close" onClick={() => setShowLogin(false)} aria-label="Close">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

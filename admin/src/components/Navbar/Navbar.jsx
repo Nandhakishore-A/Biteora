@@ -6,7 +6,7 @@ const Navbar = ({ onLogout }) => {
     <div className="navbar glass-panel">
       <div className="navbar-brand">
         <div>
-          <p className="navbar-kicker">FeastDash Admin</p>
+          <p className="navbar-kicker">Biteora Admin</p>
           <p className="navbar-subtitle">Menu and order control</p>
         </div>
       </div>

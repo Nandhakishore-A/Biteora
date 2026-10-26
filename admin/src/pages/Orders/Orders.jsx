@@ -86,7 +86,7 @@ const Orders = ({ url, token }) => {
       <div className="section-heading" style={{ marginBottom: "1rem" }}>
         <div>
           <p className="eyebrow">Fulfillment Queue</p>
-          <h2>FeastDash Order Pipeline</h2>
+          <h2>Biteora Order Pipeline</h2>
         </div>
         <p className="section-note">Review live incoming orders, check payment status, and update kitchen progress.</p>
       </div>

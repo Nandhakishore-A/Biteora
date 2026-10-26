@@ -54,7 +54,7 @@ const swaggerOptions = {
     definition: {
         openapi: "3.0.0",
         info: {
-            title: "FeastDash API",
+            title: "Biteora API",
             version: "2.0.0",
             description: "Industry-Level Food Delivery Platform REST API"
         },
@@ -98,7 +98,7 @@ app.get("/api/health", (req, res) => {
     const isDbConnected = mongoose.connection.readyState === 1;
     res.status(isDbConnected ? 200 : 503).json({
         status: isDbConnected ? "ok" : "degraded",
-        service: "FeastDash API",
+        service: "Biteora API",
         timestamp: new Date().toISOString(),
         database: isDbConnected ? "connected" : (mongoose.connection.readyState === 2 ? "connecting" : "disconnected"),
         hasMongoUri: Boolean(process.env.MONGODB_URI),
@@ -115,7 +115,7 @@ app.use("/api/order", orderRouter);
 app.use("/api/admin", adminRouter);
 
 app.get("/", (req, res) => {
-    res.send("FeastDash API is running");
+    res.send("Biteora API is running");
 });
 
 // Centralized Error Handling Middleware
@@ -131,7 +131,7 @@ app.use((err, req, res, next) => {
 export const startServer = async () => {
     await connectDB();
     const server = app.listen(PORT, () => {
-        console.log(`FeastDash server is running on port ${PORT}`);
+        console.log(`Biteora server is running on port ${PORT}`);
         console.log(`Swagger docs available at http://localhost:${PORT}/api-docs`);
         console.log(`Health check available at http://localhost:${PORT}/api/health`);
     });

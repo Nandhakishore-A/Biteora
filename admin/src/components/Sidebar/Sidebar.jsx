@@ -7,7 +7,7 @@ const Sidebar = () => {
     <aside className="sidebar glass-panel">
       <div className="sidebar-top">
         <p className="sidebar-label">Workspace</p>
-        <p className="sidebar-title">FeastDash panel</p>
+        <p className="sidebar-title">Biteora panel</p>
         <p className="sidebar-copy">A focused control surface for the restaurant menu and order queue.</p>
       </div>
       <div className="sidebar-options">

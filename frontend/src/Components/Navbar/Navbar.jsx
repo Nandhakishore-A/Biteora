@@ -61,7 +61,7 @@ const Navbar = ({ setShowLogin }) => {
   return (
     <nav className="navbar">
       <Link to="/" className="navbar-brand">
-        <span className="navbar-logo-text">Feast<span className="logo-accent">Dash</span></span>
+        <span className="navbar-logo-text">Bite<span className="logo-accent">ora</span></span>
       </Link>
 
       <button

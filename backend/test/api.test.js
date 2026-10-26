@@ -37,18 +37,18 @@ after(async () => {
     await mongoose.disconnect();
 });
 
-describe("FeastDash API Automated Verification Suite", () => {
+describe("Biteora API Automated Verification Suite", () => {
     test("Health check endpoint returns status 200 and connected DB", async () => {
         const res = await fetch(`${BASE_URL}/api/health`);
         assert.equal(res.status, 200);
         const data = await res.json();
         assert.equal(data.status, "ok");
-        assert.equal(data.service, "FeastDash API");
+        assert.equal(data.service, "Biteora API");
         assert.equal(data.database, "connected");
     });
 
     test("User registration succeeds and returns valid JWT token", async () => {
-        const uniqueEmail = `test_${Date.now()}@feastdash.test`;
+        const uniqueEmail = `test_${Date.now()}@biteora.test`;
         const res = await fetch(`${BASE_URL}/api/user/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },

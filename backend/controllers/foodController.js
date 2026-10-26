@@ -1,7 +1,7 @@
 import foodModel from "../models/foodModel.js";
 import cloudinary from "../config/cloudinary.js";
 
-const UPLOAD_FOLDER = process.env.CLOUDINARY_FOLDER || "mern_stack_project_storage/FeastDash";
+const UPLOAD_FOLDER = process.env.CLOUDINARY_FOLDER || "mern_stack_project_storage/Biteora";
 
 // Helper to upload buffer to Cloudinary
 const uploadToCloudinary = (fileBuffer) => {

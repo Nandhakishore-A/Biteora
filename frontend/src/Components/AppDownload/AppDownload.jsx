@@ -7,8 +7,8 @@ const AppDownload = () => {
       <div className="app-download-card">
         <div className="app-download-content">
           <span className="app-download-badge">📱 Mobile App</span>
-          <h2>Get the <span className="gradient-text">FeastDash</span> App</h2>
-          <p>For a faster, smoother experience — download the FeastDash app and order on the go!</p>
+          <h2>Get the <span className="gradient-text">Biteora</span> App</h2>
+          <p>For a faster, smoother experience — download the Biteora app and order on the go!</p>
           <div className="app-download-buttons">
             <img src={assets.play_store} alt="Google Play Store" />
             <img src={assets.app_store} alt="Apple App Store" />

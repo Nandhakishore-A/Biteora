@@ -9,7 +9,7 @@ const List = ({ url }) => {
   const [loading, setLoading] = useState(false);
 
   const removeFood = async (foodId, foodName) => {
-    if (!window.confirm(`Are you sure you want to delete "${foodName}" from FeastDash?`)) {
+    if (!window.confirm(`Are you sure you want to delete "${foodName}" from Biteora?`)) {
       return;
     }
 
@@ -68,7 +68,7 @@ const List = ({ url }) => {
       <div className="section-heading">
         <div>
           <p className="eyebrow">Inventory</p>
-          <h2>Manage FeastDash Menu</h2>
+          <h2>Manage Biteora Menu</h2>
         </div>
         <p className="section-note">Review active items, check pricing, and clean up outdated catalog dishes.</p>
       </div>

@@ -36,7 +36,7 @@ const App = () => {
   const location = useLocation();
   const showHero = location.pathname !== "/orders";
   const currentView = pageConfig[location.pathname] || {
-    kicker: "FeastDash Admin",
+    kicker: "Biteora Admin",
     title: "Restaurant control center",
     description: "Keep the menu and order pipeline aligned from one clean dashboard.",
     tags: ["Menu updates", "Order monitoring", "Operational clarity"],
