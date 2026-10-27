@@ -175,3 +175,105 @@
   max-width: 380px;
   margin: 6px auto 0;
 }
+
+/* Floating Live Cart Toast / Bar */
+.floating-cart-toast {
+  position: fixed;
+  bottom: 84px;
+  right: 24px;
+  background: #111814;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  box-shadow: 0 12px 36px rgba(17, 24, 20, 0.35);
+  border: 1.5px solid var(--primary-lime);
+  z-index: 99;
+  cursor: pointer;
+  animation: slideUpToast 0.35s ease-out;
+  transition: all var(--transition-fast);
+}
+
+.floating-cart-toast:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 44px rgba(100, 216, 0, 0.3);
+}
+
+.toast-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toast-icon {
+  font-size: 22px;
+}
+
+.toast-count {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary-lime);
+  color: #111814;
+  font-size: 12px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.toast-info strong {
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.toast-info small {
+  font-size: 11px;
+  color: var(--primary-lime);
+  font-weight: 700;
+}
+
+.toast-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.toast-arrow {
+  color: var(--primary-lime);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+@media (max-width: 600px) {
+  .floating-cart-toast {
+    bottom: 84px;
+    left: 16px;
+    right: 16px;
+  }
+}
+
+@keyframes slideUpToast {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

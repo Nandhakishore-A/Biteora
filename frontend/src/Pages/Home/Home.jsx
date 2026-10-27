@@ -1,8 +1,11 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import ExploreMenu from "../../Components/ExploreMenu/ExploreMenu";
 import Header from "../../Components/Header/Header";
 import "./Home.css";
 import FoodDisplay from "../../Components/FoodDisplay/FoodDisplay";
+import TrendingDishes from "../../Components/TrendingDishes/TrendingDishes";
+import FoodModal from "../../Components/FoodModal/FoodModal";
 import AppDownload from "../../Components/AppDownload/AppDownload";
 import { StoreContext } from "../../Context/storeContext";
 
@@ -11,7 +14,11 @@ const Home = ({ showOnlyFavorites, setShowOnlyFavorites }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("default");
   const [copiedCode, setCopiedCode] = useState("");
-  const { food_list } = useContext(StoreContext);
+  const [selectedDish, setSelectedDish] = useState(null);
+
+  const { food_list, cartItems, addToCart, removeFromCart, getTotalCartAmount, url } =
+    useContext(StoreContext);
+  const navigate = useNavigate();
 
   let favIds = [];
   try {
@@ -21,6 +28,8 @@ const Home = ({ showOnlyFavorites, setShowOnlyFavorites }) => {
   }
 
   const favFoods = (food_list || []).filter((f) => favIds.includes(f._id || f.id));
+  const totalCartCount = Object.values(cartItems).reduce((sum, qty) => sum + qty, 0);
+  const totalCartAmount = getTotalCartAmount();
 
   const copyPromo = (code) => {
     navigator.clipboard?.writeText(code);
@@ -84,7 +93,24 @@ const Home = ({ showOnlyFavorites, setShowOnlyFavorites }) => {
             </button>
           </div>
         ) : (
-          <FoodDisplay category="All" searchTerm="" sortBy={sortBy} favOnly={true} />
+          <FoodDisplay
+            category="All"
+            searchTerm=""
+            sortBy={sortBy}
+            favOnly={true}
+            onSelectDish={setSelectedDish}
+          />
+        )}
+
+        {selectedDish && (
+          <FoodModal
+            dish={selectedDish}
+            onClose={() => setSelectedDish(null)}
+            cartCount={cartItems[selectedDish._id || selectedDish.id] || 0}
+            onAdd={addToCart}
+            onRemove={removeFromCart}
+            url={url}
+          />
         )}
 
         <AppDownload />
@@ -131,6 +157,10 @@ const Home = ({ showOnlyFavorites, setShowOnlyFavorites }) => {
         </div>
       </section>
 
+      {/* Chef's Specials & Trending Dishes Carousel (Interactive Showcase) */}
+      <TrendingDishes onSelectDish={setSelectedDish} />
+
+      {/* Category Discovery & Search Filter */}
       <ExploreMenu
         category={category}
         setCategory={setCategory}
@@ -139,12 +169,50 @@ const Home = ({ showOnlyFavorites, setShowOnlyFavorites }) => {
         sortBy={sortBy}
         setSortBy={setSortBy}
       />
-      
+
+      {/* Main Dishes Grid with Live Filter Pills & Dish Modal */}
       <FoodDisplay
         category={category}
         searchTerm={searchTerm}
         sortBy={sortBy}
+        onSelectDish={setSelectedDish}
       />
+
+      {/* Interactive Floating Quick Cart Bar (appears when items added) */}
+      {totalCartCount > 0 && (
+        <div
+          className="floating-cart-toast"
+          onClick={() => navigate("/cart")}
+          role="button"
+          tabIndex={0}
+          title="View Cart and Checkout"
+        >
+          <div className="toast-left">
+            <span className="toast-icon">🛒</span>
+            <span className="toast-count">{totalCartCount}</span>
+            <div className="toast-info">
+              <strong>Order in Progress</strong>
+              <small>Subtotal: ₹{totalCartAmount.toFixed(2)}</small>
+            </div>
+          </div>
+          <div className="toast-right">
+            <span>View Cart</span>
+            <span className="toast-arrow">→</span>
+          </div>
+        </div>
+      )}
+
+      {/* Quick View Dish Modal */}
+      {selectedDish && (
+        <FoodModal
+          dish={selectedDish}
+          onClose={() => setSelectedDish(null)}
+          cartCount={cartItems[selectedDish._id || selectedDish.id] || 0}
+          onAdd={addToCart}
+          onRemove={removeFromCart}
+          url={url}
+        />
+      )}
 
       <AppDownload />
     </div>

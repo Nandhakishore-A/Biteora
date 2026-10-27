@@ -6,7 +6,13 @@ export const dishes = [
     price: 199,
     category: "Burger",
     image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 210,
+    prepTime: "20-25 min",
+    isVeg: false,
+    tag: "Bestseller",
+    calories: "450 kcal"
   },
   {
     name: "Crispy Paneer Royale Burger",
@@ -14,7 +20,13 @@ export const dishes = [
     price: 179,
     category: "Burger",
     image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 340,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Chef Special",
+    calories: "380 kcal"
   },
   {
     name: "Smoky BBQ Bacon Burger",
@@ -22,7 +34,41 @@ export const dishes = [
     price: 249,
     category: "Burger",
     image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.7,
+    reviewsCount: 165,
+    prepTime: "25-30 min",
+    isVeg: false,
+    tag: "Trending",
+    calories: "520 kcal"
+  },
+  {
+    name: "Double Truffle Mushroom Burger",
+    description: "Grilled smashed patty crowned with sautéed portobello mushrooms, black truffle aioli & gruyere",
+    price: 289,
+    category: "Burger",
+    image: "https://images.unsplash.com/photo-1582196016295-f8c8bd4b3e99?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 190,
+    prepTime: "20-25 min",
+    isVeg: false,
+    tag: "Gourmet",
+    calories: "490 kcal"
+  },
+  {
+    name: "Crispy Korean BBQ Chicken Burger",
+    description: "Crispy fried chicken breast drenched in sweet sticky gochujang sauce with kimchi slaw",
+    price: 219,
+    category: "Burger",
+    image: "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 220,
+    prepTime: "15-20 min",
+    isVeg: false,
+    tag: "Trending",
+    calories: "470 kcal"
   },
 
   // 2. Pizza
@@ -32,7 +78,13 @@ export const dishes = [
     price: 299,
     category: "Pizza",
     image: "https://images.unsplash.com/photo-1604382355076-af4b0eb60143?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 410,
+    prepTime: "20-25 min",
+    isVeg: true,
+    tag: "Bestseller",
+    calories: "580 kcal"
   },
   {
     name: "Fiery Pepperoni Feast",
@@ -40,25 +92,71 @@ export const dishes = [
     price: 369,
     category: "Pizza",
     image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 275,
+    prepTime: "20-25 min",
+    isVeg: false,
+    tag: "Trending",
+    calories: "690 kcal"
   },
   {
-    name: "Truffle Mushroom Gourmet",
+    name: "Truffle Mushroom Gourmet Pizza",
     description: "Creamy garlic base with sautéed cremini & shiitake mushrooms, truffle oil, and fontina cheese",
     price: 399,
     category: "Pizza",
     image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 185,
+    prepTime: "25-30 min",
+    isVeg: true,
+    tag: "Chef Special",
+    calories: "620 kcal"
+  },
+  {
+    name: "Four Cheese Quattro Formaggi",
+    description: "White artisan pizza with mozzarella, gorgonzola, aged parmesan, and creamy ricotta",
+    price: 419,
+    category: "Pizza",
+    image: "https://images.unsplash.com/photo-1573821663912-569905455b1c?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 145,
+    prepTime: "20-25 min",
+    isVeg: true,
+    tag: "Must Try",
+    calories: "710 kcal"
+  },
+  {
+    name: "Spicy Chipotle Paneer Supreme",
+    description: "Zesty Mexican chipotle spiced paneer, roasted peppers, red jalapenos, and mozzarella",
+    price: 349,
+    category: "Pizza",
+    image: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.7,
+    reviewsCount: 130,
+    prepTime: "20-25 min",
+    isVeg: true,
+    tag: "Trending",
+    calories: "640 kcal"
   },
 
   // 3. Biryani
   {
     name: "Hyderabadi Dum Biryani",
-    description: "Fragrant basmati rice slow-cooked on dum with marinated spiced meat, saffron, and mint",
+    description: "Fragrant basmati rice slow-cooked on dum with marinated spiced chicken, saffron, and mint",
     price: 320,
     category: "Biryani",
     image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 520,
+    prepTime: "25-30 min",
+    isVeg: false,
+    tag: "Bestseller",
+    calories: "550 kcal"
   },
   {
     name: "Lucknowi Veg Biryani",
@@ -66,7 +164,13 @@ export const dishes = [
     price: 240,
     category: "Biryani",
     image: "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 290,
+    prepTime: "20-25 min",
+    isVeg: true,
+    tag: "Chef Special",
+    calories: "440 kcal"
   },
   {
     name: "Kolkata Special Biryani",
@@ -74,7 +178,41 @@ export const dishes = [
     price: 280,
     category: "Biryani",
     image: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.7,
+    reviewsCount: 175,
+    prepTime: "25-30 min",
+    isVeg: false,
+    tag: "Authentic",
+    calories: "510 kcal"
+  },
+  {
+    name: "Royal Mutton Dum Biryani",
+    description: "Tender succulently marinated mutton pieces layered with saffron kewra rice and brown onions",
+    price: 420,
+    category: "Biryani",
+    image: "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 380,
+    prepTime: "30-35 min",
+    isVeg: false,
+    tag: "Chef Special",
+    calories: "620 kcal"
+  },
+  {
+    name: "Tandoori Paneer Tikka Biryani",
+    description: "Smoky charcoal grilled paneer tikka cubes folded into spiced biryani rice with cooling raita",
+    price: 260,
+    category: "Biryani",
+    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 215,
+    prepTime: "20-25 min",
+    isVeg: true,
+    tag: "Must Try",
+    calories: "480 kcal"
   },
 
   // 4. Drinks
@@ -84,7 +222,13 @@ export const dishes = [
     price: 110,
     category: "Drinks",
     image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 180,
+    prepTime: "10-15 min",
+    isVeg: true,
+    tag: "Bestseller",
+    calories: "120 kcal"
   },
   {
     name: "Royal Alphonso Mango Lassi",
@@ -92,7 +236,13 @@ export const dishes = [
     price: 130,
     category: "Drinks",
     image: "https://images.unsplash.com/photo-1570696516188-ade861b84a49?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 320,
+    prepTime: "10-15 min",
+    isVeg: true,
+    tag: "Chef Special",
+    calories: "210 kcal"
   },
   {
     name: "Cold Brew Iced Coffee",
@@ -100,7 +250,41 @@ export const dishes = [
     price: 150,
     category: "Drinks",
     image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.7,
+    reviewsCount: 140,
+    prepTime: "5-10 min",
+    isVeg: true,
+    tag: "Trending",
+    calories: "90 kcal"
+  },
+  {
+    name: "Belgian Chocolate Thickshake",
+    description: "Rich dark melted chocolate blended with cocoa cream gelato, choco chips and whipped swirl",
+    price: 160,
+    category: "Drinks",
+    image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 260,
+    prepTime: "10-15 min",
+    isVeg: true,
+    tag: "Must Try",
+    calories: "340 kcal"
+  },
+  {
+    name: "Wild Berry Sparkler",
+    description: "Crushed raspberries, blackberries, and strawberries with elderflower soda and lemon zest",
+    price: 120,
+    category: "Drinks",
+    image: "https://images.unsplash.com/photo-1556881286-fc6915169721?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 110,
+    prepTime: "10-15 min",
+    isVeg: true,
+    tag: "Refreshing",
+    calories: "110 kcal"
   },
 
   // 5. Cake
@@ -110,7 +294,13 @@ export const dishes = [
     price: 350,
     category: "Cake",
     image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 310,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Bestseller",
+    calories: "410 kcal"
   },
   {
     name: "Butterscotch Crunch Cake",
@@ -118,7 +308,13 @@ export const dishes = [
     price: 320,
     category: "Cake",
     image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.7,
+    reviewsCount: 195,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Popular",
+    calories: "390 kcal"
   },
   {
     name: "Red Velvet Pastry Slice",
@@ -126,7 +322,27 @@ export const dishes = [
     price: 180,
     category: "Cake",
     image: "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 230,
+    prepTime: "10-15 min",
+    isVeg: true,
+    tag: "Chef Special",
+    calories: "320 kcal"
+  },
+  {
+    name: "Strawberry Vanilla Cupcake",
+    description: "Fluffy vanilla crumb topped with whipped strawberry cream and sprinkles",
+    price: 90,
+    category: "Cake",
+    image: "https://images.unsplash.com/photo-1519869325930-281384150729?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 160,
+    prepTime: "10-15 min",
+    isVeg: true,
+    tag: "Sweet Bite",
+    calories: "220 kcal"
   },
 
   // 6. Salad
@@ -136,7 +352,13 @@ export const dishes = [
     price: 150,
     category: "Salad",
     image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.7,
+    reviewsCount: 140,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Healthy",
+    calories: "220 kcal"
   },
   {
     name: "Mediterranean Veg Salad",
@@ -144,7 +366,13 @@ export const dishes = [
     price: 130,
     category: "Salad",
     image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 185,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Superfood",
+    calories: "190 kcal"
   },
   {
     name: "Avocado Quinoa Protein Bowl",
@@ -152,7 +380,13 @@ export const dishes = [
     price: 210,
     category: "Salad",
     image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 220,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Chef Special",
+    calories: "280 kcal"
   },
 
   // 7. Rolls
@@ -162,7 +396,13 @@ export const dishes = [
     price: 170,
     category: "Rolls",
     image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 380,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Bestseller",
+    calories: "340 kcal"
   },
   {
     name: "Crispy Veg Spring Rolls",
@@ -170,7 +410,13 @@ export const dishes = [
     price: 140,
     category: "Rolls",
     image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 195,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Crunchy",
+    calories: "260 kcal"
   },
   {
     name: "Spicy Schezwan Egg Roll",
@@ -178,7 +424,27 @@ export const dishes = [
     price: 150,
     category: "Rolls",
     image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.7,
+    reviewsCount: 160,
+    prepTime: "15-20 min",
+    isVeg: false,
+    tag: "Street Style",
+    calories: "310 kcal"
+  },
+  {
+    name: "Butter Chicken Kathi Roll",
+    description: "Succulent shredded tandoori chicken cooked in creamy makhani gravy wrapped in roomali roti",
+    price: 190,
+    category: "Rolls",
+    image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 290,
+    prepTime: "15-20 min",
+    isVeg: false,
+    tag: "Chef Special",
+    calories: "410 kcal"
   },
 
   // 8. Desserts
@@ -188,7 +454,13 @@ export const dishes = [
     price: 190,
     category: "Desserts",
     image: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 420,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Bestseller",
+    calories: "420 kcal"
   },
   {
     name: "Gulab Jamun with Ice Cream",
@@ -196,7 +468,13 @@ export const dishes = [
     price: 120,
     category: "Desserts",
     image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 310,
+    prepTime: "10-15 min",
+    isVeg: true,
+    tag: "Classic",
+    calories: "310 kcal"
   },
   {
     name: "New York Classic Cheesecake",
@@ -204,7 +482,27 @@ export const dishes = [
     price: 210,
     category: "Desserts",
     image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 280,
+    prepTime: "10-15 min",
+    isVeg: true,
+    tag: "Chef Special",
+    calories: "380 kcal"
+  },
+  {
+    name: "Molten Lava Chocolate Volcano",
+    description: "Warm dark cocoa cake with a flowing molten chocolate core, dusted with powdered sugar",
+    price: 160,
+    category: "Desserts",
+    image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 350,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Trending",
+    calories: "390 kcal"
   },
 
   // 9. Sandwich
@@ -214,7 +512,13 @@ export const dishes = [
     price: 130,
     category: "Sandwich",
     image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 190,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Bestseller",
+    calories: "320 kcal"
   },
   {
     name: "Avocado Veg Club Sandwich",
@@ -222,7 +526,13 @@ export const dishes = [
     price: 180,
     category: "Sandwich",
     image: "https://images.unsplash.com/photo-1554433607-66b5efe9d304?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 240,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Healthy",
+    calories: "310 kcal"
   },
   {
     name: "Peri Peri Paneer Panini",
@@ -230,7 +540,27 @@ export const dishes = [
     price: 160,
     category: "Sandwich",
     image: "https://images.unsplash.com/photo-1509722747041-616f39b57569?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 175,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Spicy",
+    calories: "350 kcal"
+  },
+  {
+    name: "Crispy Chicken Club Sandwich",
+    description: "Triple-layer toasted brioche with golden crumbed chicken, fried egg, cheddar, and garlic aioli",
+    price: 195,
+    category: "Sandwich",
+    image: "https://images.unsplash.com/photo-1567234669003-dce7a7a88821?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 210,
+    prepTime: "20-25 min",
+    isVeg: false,
+    tag: "Popular",
+    calories: "460 kcal"
   },
 
   // 10. Pure Veg
@@ -240,7 +570,13 @@ export const dishes = [
     price: 240,
     category: "Pure Veg",
     image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 480,
+    prepTime: "20-25 min",
+    isVeg: true,
+    tag: "Bestseller",
+    calories: "420 kcal"
   },
   {
     name: "Dal Makhani",
@@ -248,7 +584,13 @@ export const dishes = [
     price: 200,
     category: "Pure Veg",
     image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 390,
+    prepTime: "20-25 min",
+    isVeg: true,
+    tag: "Chef Special",
+    calories: "360 kcal"
   },
   {
     name: "Shahi Paneer Delight",
@@ -256,7 +598,41 @@ export const dishes = [
     price: 250,
     category: "Pure Veg",
     image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 260,
+    prepTime: "20-25 min",
+    isVeg: true,
+    tag: "Royal Treat",
+    calories: "450 kcal"
+  },
+  {
+    name: "Malai Kofta Cashew Velouté",
+    description: "Melt-in-mouth cottage cheese and potato dumplings bathed in an ultra-velvety cashew-cardamom gravy",
+    price: 260,
+    category: "Pure Veg",
+    image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 220,
+    prepTime: "25-30 min",
+    isVeg: true,
+    tag: "Chef Special",
+    calories: "480 kcal"
+  },
+  {
+    name: "Crispy Kadhai Paneer",
+    description: "Wok-fried paneer chunks with crunchy bell peppers, onions, and freshly ground coriander seeds",
+    price: 245,
+    category: "Pure Veg",
+    image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 195,
+    prepTime: "20-25 min",
+    isVeg: true,
+    tag: "Popular",
+    calories: "390 kcal"
   },
 
   // 11. Pasta
@@ -266,7 +642,13 @@ export const dishes = [
     price: 210,
     category: "Pasta",
     image: "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 320,
+    prepTime: "20-25 min",
+    isVeg: true,
+    tag: "Bestseller",
+    calories: "490 kcal"
   },
   {
     name: "Spicy Red Sauce Arrabbiata",
@@ -274,7 +656,13 @@ export const dishes = [
     price: 190,
     category: "Pasta",
     image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 210,
+    prepTime: "20-25 min",
+    isVeg: true,
+    tag: "Spicy",
+    calories: "380 kcal"
   },
   {
     name: "Pesto Basilico Fusilli",
@@ -282,7 +670,27 @@ export const dishes = [
     price: 230,
     category: "Pasta",
     image: "https://images.unsplash.com/photo-1621996346565-e3d5d6281781?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 165,
+    prepTime: "20-25 min",
+    isVeg: true,
+    tag: "Chef Special",
+    calories: "410 kcal"
+  },
+  {
+    name: "Truffle Wild Mushroom Fettuccine",
+    description: "Ribbon fettuccine with sautéed wild forest mushrooms in rich garlic truffle emulsion",
+    price: 280,
+    category: "Pasta",
+    image: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 145,
+    prepTime: "25-30 min",
+    isVeg: true,
+    tag: "Gourmet",
+    calories: "460 kcal"
   },
 
   // 12. Noodles
@@ -292,7 +700,13 @@ export const dishes = [
     price: 160,
     category: "Noodles",
     image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 310,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Bestseller",
+    calories: "340 kcal"
   },
   {
     name: "Schezwan Chili Noodles",
@@ -300,7 +714,13 @@ export const dishes = [
     price: 180,
     category: "Noodles",
     image: "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 290,
+    prepTime: "15-20 min",
+    isVeg: true,
+    tag: "Spicy",
+    calories: "380 kcal"
   },
   {
     name: "Pad Thai Street Noodles",
@@ -308,7 +728,27 @@ export const dishes = [
     price: 220,
     category: "Noodles",
     image: "https://images.unsplash.com/photo-1559847844-5315695dadae?w=600&auto=format&fit=crop&q=80",
-    isAvailable: true
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 240,
+    prepTime: "20-25 min",
+    isVeg: true,
+    tag: "Chef Special",
+    calories: "410 kcal"
+  },
+  {
+    name: "Japanese Teriyaki Udon Noodles",
+    description: "Thick chewy udon noodles glazed in sweet savory teriyaki sauce with shiitake mushrooms & sesame",
+    price: 230,
+    category: "Noodles",
+    image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 180,
+    prepTime: "20-25 min",
+    isVeg: true,
+    tag: "Trending",
+    calories: "430 kcal"
   }
 ];
 

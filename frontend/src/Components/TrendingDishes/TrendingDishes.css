@@ -1,0 +1,258 @@
+/* ===== Biteora — Trending Dishes Showcase Styles ===== */
+
+.trending-section {
+  margin: 10px 0 28px;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.trending-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.trending-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  color: #276b00;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 2px;
+}
+
+.trending-title {
+  font-size: clamp(20px, 2.6vw, 26px);
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.4px;
+}
+
+.trending-nav-arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.arrow-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  color: var(--text-dark);
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.arrow-btn:hover {
+  background: var(--primary-lime);
+  border-color: var(--primary-lime);
+  color: #111814;
+}
+
+/* Horizontal Scroller */
+.trending-scroller {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 4px 4px 16px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.trending-scroller::-webkit-scrollbar {
+  height: 6px;
+}
+
+.trending-scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.trending-scroller::-webkit-scrollbar-thumb {
+  background: rgba(100, 216, 0, 0.3);
+  border-radius: var(--radius-full);
+}
+
+.trending-card {
+  flex: 0 0 250px;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(50, 80, 40, 0.05);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.trending-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(100, 216, 0, 0.4);
+  box-shadow: 0 12px 30px rgba(50, 80, 40, 0.1);
+}
+
+.trending-card-img-box {
+  position: relative;
+  width: 100%;
+  height: 145px;
+  background: #f1f5f2;
+  overflow: hidden;
+}
+
+.trending-card-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.trending-card:hover .trending-card-img-box img {
+  transform: scale(1.06);
+}
+
+.trending-tag-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 3px 8px;
+  background: var(--primary-lime);
+  color: #111814;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.trending-rating-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  padding: 2px 7px;
+  background: rgba(17, 24, 20, 0.8);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+.trending-card-info {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.trending-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.trending-dish-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.diet-dot-mini {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.diet-dot-mini.veg {
+  background: #16a34a;
+}
+
+.diet-dot-mini.non-veg {
+  background: #dc2626;
+}
+
+.trending-dish-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  margin-bottom: 12px;
+}
+
+.trending-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.trending-price {
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--text-dark);
+}
+
+.trending-add-btn {
+  padding: 6px 14px;
+  background: #111814;
+  color: #ffffff;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.trending-add-btn:hover {
+  background: var(--primary-lime);
+  color: #111814;
+  transform: scale(1.05);
+}
+
+.trending-qty-pill {
+  display: flex;
+  align-items: center;
+  background: #111814;
+  border-radius: var(--radius-full);
+  padding: 2px;
+  color: #ffffff;
+}
+
+.trending-qty-pill button {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: none;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trending-qty-pill button:hover {
+  background: var(--primary-lime);
+  color: #111814;
+}
+
+.trending-qty-pill span {
+  padding: 0 8px;
+  font-size: 12px;
+  font-weight: 800;
+}

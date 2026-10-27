@@ -59,41 +59,34 @@ const swaggerOptions = {
             description: "Industry-Level Food Delivery Platform REST API"
         },
         servers: [
-            { url: `http://localhost:${PORT}` }
+            {
+                url: `http://localhost:${PORT}`,
+                description: "Local Development Server"
+            }
         ],
         components: {
             securitySchemes: {
-                bearerAuth: {
+                BearerAuth: {
                     type: "http",
                     scheme: "bearer",
                     bearerFormat: "JWT"
+                },
+                TokenHeader: {
+                    type: "apiKey",
+                    in: "header",
+                    name: "token",
+                    description: "Legacy FeastDash auth token"
                 }
             }
         }
     },
-    apis: ["./routes/*.js", "./backend/routes/*.js"]
+    apis: ["./routes/*.js"]
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// Static files for backward compatibility
-app.use("/images", express.static("uploads"));
-
-// Ensure database is connected for serverless invocations (e.g. Vercel)
-app.use(async (req, res, next) => {
-    try {
-        if (mongoose.connection.readyState !== 1) {
-            await connectDB();
-        }
-        next();
-    } catch (dbErr) {
-        console.error("Serverless DB Connection Error:", dbErr);
-        next();
-    }
-});
-
-// Health Check Endpoint
+// Health Check Endpoint (used for automated tests & readiness probes)
 app.get("/api/health", (req, res) => {
     const isDbConnected = mongoose.connection.readyState === 1;
     res.status(isDbConnected ? 200 : 503).json({
@@ -127,14 +120,14 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Start Server after connecting to MongoDB
-export const startServer = async () => {
-    await connectDB();
+// Start Server immediately, then connect to MongoDB in background
+export const startServer = () => {
     const server = app.listen(PORT, () => {
         console.log(`Biteora server is running on port ${PORT}`);
         console.log(`Swagger docs available at http://localhost:${PORT}/api-docs`);
         console.log(`Health check available at http://localhost:${PORT}/api/health`);
     });
+    connectDB().catch((err) => console.error("Initial DB connect error:", err.message));
     return server;
 };
 

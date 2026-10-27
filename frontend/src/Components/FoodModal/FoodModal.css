@@ -1,0 +1,292 @@
+/* ===== Biteora — Dish Quick-View Modal Styles ===== */
+
+.dish-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 20, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeInModal 0.25s ease-out;
+}
+
+.dish-modal-container {
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  max-width: 520px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  animation: scaleUpModal 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dish-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(17, 24, 20, 0.65);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-fast);
+}
+
+.dish-modal-close:hover {
+  background: #111814;
+  transform: scale(1.08);
+}
+
+/* Modal Hero */
+.dish-modal-hero {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  background: #f1f5f2;
+  overflow: hidden;
+  border-top-left-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-xl);
+}
+
+.dish-modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.dish-modal-container:hover .dish-modal-img {
+  transform: scale(1.03);
+}
+
+.dish-modal-badges {
+  position: absolute;
+  bottom: 14px;
+  left: 16px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dish-diet-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.dish-diet-pill.veg {
+  background: rgba(255, 255, 255, 0.92);
+  color: #1e7e00;
+  border: 1px solid rgba(30, 126, 0, 0.3);
+}
+
+.dish-diet-pill.non-veg {
+  background: rgba(255, 255, 255, 0.92);
+  color: #dc2626;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.diet-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.dish-tag-pill {
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 800;
+  background: var(--primary-lime);
+  color: #111814;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 12px rgba(100, 216, 0, 0.35);
+}
+
+/* Modal Body */
+.dish-modal-body {
+  padding: 24px;
+}
+
+.dish-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.dish-modal-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.25;
+}
+
+.dish-modal-cat {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-top: 4px;
+}
+
+.dish-modal-price {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--text-dark);
+  letter-spacing: -0.5px;
+}
+
+/* Metrics Strip */
+.dish-metrics-strip {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--bg-surface-soft);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dark);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.metric-pill small {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.dish-modal-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #4b5850;
+  margin-bottom: 16px;
+}
+
+.dish-highlights-box {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 14px;
+  background: #f7faf7;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(100, 216, 0, 0.2);
+  margin-bottom: 22px;
+}
+
+.highlight-tag {
+  font-size: 12px;
+  font-weight: 600;
+  color: #276b00;
+}
+
+/* Modal Footer */
+.dish-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.modal-qty-pill {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-surface-soft);
+  border-radius: var(--radius-full);
+  padding: 4px;
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+}
+
+.modal-qty-pill button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--text-dark);
+  border: none;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.modal-qty-pill button:hover {
+  background: var(--primary-lime);
+}
+
+.modal-qty-count {
+  padding: 0 14px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.modal-no-item {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.modal-cta-btn {
+  flex: 1;
+  height: 48px;
+  font-size: 14px;
+  font-weight: 800;
+  border-radius: var(--radius-full);
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUpModal {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

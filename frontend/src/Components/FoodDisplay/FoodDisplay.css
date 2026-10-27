@@ -9,11 +9,12 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 
 .food-section-title {
-  font-size: clamp(20px, 3vw, 28px);
+  font-size: clamp(20px, 2.8vw, 28px);
   font-weight: 800;
   color: var(--text-dark);
   letter-spacing: -0.5px;
@@ -25,7 +26,7 @@
 }
 
 .food-section-sub {
-  font-size: clamp(13px, 1.6vw, 15px);
+  font-size: clamp(13px, 1.5vw, 15px);
   color: var(--text-muted);
   margin-top: 4px;
 }
@@ -41,6 +42,61 @@
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
   white-space: nowrap;
+}
+
+/* Quick Filter Chips Bar */
+.quick-filter-scroll-wrapper {
+  overflow-x: auto;
+  margin-bottom: 22px;
+  padding-bottom: 4px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.quick-filter-scroll-wrapper::-webkit-scrollbar {
+  height: 4px;
+}
+
+.quick-filter-scroll-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(100, 216, 0, 0.3);
+  border-radius: var(--radius-full);
+}
+
+.quick-filter-pills {
+  display: flex;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.quick-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.quick-filter-chip:hover {
+  background: var(--bg-surface-soft);
+  border-color: rgba(100, 216, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+.quick-filter-chip.active {
+  background: #111814;
+  color: #ffffff;
+  border-color: #111814;
+  box-shadow: 0 4px 12px rgba(17, 24, 20, 0.2);
+}
+
+.quick-filter-chip.active span {
+  color: var(--primary-lime);
 }
 
 /* 2-Column on Mobile, 3-Column on Tablet, 4-Column on Desktop (PC) */
@@ -73,7 +129,7 @@
 /* Empty State */
 .food-empty-state {
   text-align: center;
-  padding: 48px 20px;
+  padding: 56px 20px;
   background: #ffffff;
   border-radius: var(--radius-lg);
   border: 1px dashed rgba(0, 0, 0, 0.1);
@@ -81,7 +137,7 @@
 }
 
 .empty-emoji {
-  font-size: 40px;
+  font-size: 44px;
   display: block;
   margin-bottom: 12px;
 }
@@ -96,4 +152,11 @@
   font-size: 14px;
   color: var(--text-muted);
   margin-top: 4px;
+}
+
+.reset-filter-btn {
+  margin-top: 16px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 700;
 }
