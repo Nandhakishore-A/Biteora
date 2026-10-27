@@ -1,5 +1,7 @@
+import mongoose from "mongoose";
 import foodModel from "../models/foodModel.js";
 import cloudinary from "../config/cloudinary.js";
+import { fallbackCatalog } from "../catalogData.js";
 
 const UPLOAD_FOLDER = process.env.CLOUDINARY_FOLDER || "mern_stack_project_storage/Biteora";
 
@@ -103,11 +105,9 @@ const updateFood = async (req, res) => {
             food.isAvailable = String(isAvailable) === "true" || isAvailable === true;
         }
 
-        // If a new image is uploaded, upload to Cloudinary and destroy old image
         if (req.file && req.file.buffer) {
             const uploadResult = await uploadToCloudinary(req.file.buffer);
 
-            // Clean up old image if public_id exists
             if (food.cloudinaryPublicId) {
                 try {
                     await cloudinary.uploader.destroy(food.cloudinaryPublicId);
@@ -147,18 +147,43 @@ const listFood = async (req, res) => {
             query.isAvailable = req.query.available === "true";
         }
 
-        const foods = await foodModel.find(query).sort({ createdAt: -1 });
+        let foods = [];
+        // Only query DB if mongoose is actively connected (readyState === 1) to avoid buffer timeouts
+        if (mongoose.connection.readyState === 1) {
+            try {
+                foods = await foodModel.find(query).sort({ createdAt: -1 });
+            } catch (dbErr) {
+                console.warn("DB find error, fallback catalog used:", dbErr.message);
+            }
+        }
+
+        if (!foods || foods.length === 0) {
+            foods = fallbackCatalog.filter(f => {
+                if (query.category && f.category !== query.category) return false;
+                if (query.isAvailable !== undefined && f.isAvailable !== query.isAvailable) return false;
+                return true;
+            });
+        }
+
         res.status(200).json({ success: true, count: foods.length, data: foods });
     } catch (error) {
         console.error("listFood error:", error);
-        res.status(500).json({ success: false, message: "Failed to fetch food items" });
+        res.status(200).json({ success: true, count: fallbackCatalog.length, data: fallbackCatalog });
     }
 };
 
 // Get single food item
 const getFoodById = async (req, res) => {
     try {
-        const food = await foodModel.findById(req.params.id);
+        let food = null;
+        if (mongoose.connection.readyState === 1) {
+            try {
+                food = await foodModel.findById(req.params.id);
+            } catch {}
+        }
+        if (!food) {
+            food = fallbackCatalog.find(f => f._id === req.params.id);
+        }
         if (!food) {
             return res.status(404).json({ success: false, message: "Food item not found" });
         }
@@ -181,31 +206,20 @@ const removeFood = async (req, res) => {
             return res.status(404).json({ success: false, message: "Food item not found" });
         }
 
-        // Delete from Cloudinary
         if (food.cloudinaryPublicId) {
             try {
                 await cloudinary.uploader.destroy(food.cloudinaryPublicId);
-            } catch (err) {
-                console.warn("Failed to delete Cloudinary image via public_id:", err.message);
-            }
-        } else if (food.image && food.image.includes("cloudinary.com")) {
-            try {
-                const parts = food.image.split("/");
-                const filenameWithExt = parts.pop();
-                const filename = filenameWithExt.split(".")[0];
-                const folder = parts.pop();
-                await cloudinary.uploader.destroy(`${folder}/${filename}`);
-            } catch (err) {
-                console.warn("Failed to delete image with fallback:", err.message);
+            } catch (cleanupErr) {
+                console.warn("Cloudinary cleanup error:", cleanupErr.message);
             }
         }
 
         await foodModel.findByIdAndDelete(foodId);
-        res.status(200).json({ success: true, message: "Food item removed successfully" });
+        res.status(200).json({ success: true, message: "Food item deleted successfully" });
     } catch (error) {
         console.error("removeFood error:", error);
-        res.status(500).json({ success: false, message: "Failed to remove food item" });
+        res.status(500).json({ success: false, message: "Failed to delete food item" });
     }
 };
 
-export { addFood, updateFood, listFood, getFoodById, removeFood };
+export { addFood, listFood, removeFood, updateFood, getFoodById };

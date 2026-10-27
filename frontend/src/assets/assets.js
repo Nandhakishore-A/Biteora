@@ -82,6 +82,26 @@ export const assets = {
 
 export const menu_list = [
     {
+        menu_name: "Burger",
+        menu_image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&auto=format&fit=crop&q=80"
+    },
+    {
+        menu_name: "Pizza",
+        menu_image: "https://images.unsplash.com/photo-1604382355076-af4b0eb60143?w=200&auto=format&fit=crop&q=80"
+    },
+    {
+        menu_name: "Biryani",
+        menu_image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=200&auto=format&fit=crop&q=80"
+    },
+    {
+        menu_name: "Drinks",
+        menu_image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=200&auto=format&fit=crop&q=80"
+    },
+    {
+        menu_name: "Cake",
+        menu_image: menu_5
+    },
+    {
         menu_name: "Salad",
         menu_image: menu_1
     },
@@ -98,10 +118,6 @@ export const menu_list = [
         menu_image: menu_4
     },
     {
-        menu_name: "Cake",
-        menu_image: menu_5
-    },
-    {
         menu_name: "Pure Veg",
         menu_image: menu_6
     },
@@ -112,7 +128,8 @@ export const menu_list = [
     {
         menu_name: "Noodles",
         menu_image: menu_8
-    }]
+    }
+]
 
 export const food_list = [
     {

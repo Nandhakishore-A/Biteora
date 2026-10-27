@@ -1,5 +1,5 @@
-import "./Orders.css"
-import { useEffect, useState } from "react";
+import "./Orders.css";
+import { useEffect, useState, useCallback } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { assets } from "../../assets/assets";
@@ -51,7 +51,7 @@ const Orders = ({ url, token }) => {
     }
   };
 
-  const fetchOrders = async () => {
+  const fetchOrders = useCallback(async () => {
     try {
       const response = await axios.get(`${url}/api/order/list`, {
         headers: {
@@ -67,14 +67,15 @@ const Orders = ({ url, token }) => {
     } catch {
       toast.error("Failed to fetch orders");
     }
-  };
+  }, [url, token]);
 
   useEffect(() => {
     void fetchOrders();
-  }, [url, token]);
+  }, [fetchOrders]);
 
   const filteredOrders = orders.filter((order) => {
     if (filter === "paid") return order.payment;
+    if (filter === "cod") return order.paymentMethod === "COD";
     if (filter === "active") return !["Delivered", "Cancelled"].includes(order.status);
     if (filter === "delivered") return order.status === "Delivered";
     if (filter === "cancelled") return order.status === "Cancelled";
@@ -95,6 +96,7 @@ const Orders = ({ url, token }) => {
         {[
           { key: "all", label: `All (${orders.length})` },
           { key: "active", label: `Active (${orders.filter(o => !["Delivered", "Cancelled"].includes(o.status)).length})` },
+          { key: "cod", label: `COD (${orders.filter(o => o.paymentMethod === "COD").length})` },
           { key: "paid", label: `Paid (${orders.filter(o => o.payment).length})` },
           { key: "delivered", label: `Delivered (${orders.filter(o => o.status === "Delivered").length})` },
           { key: "cancelled", label: `Cancelled (${orders.filter(o => o.status === "Cancelled").length})` }
@@ -105,11 +107,13 @@ const Orders = ({ url, token }) => {
             style={{
               padding: "0.4rem 0.9rem",
               borderRadius: "20px",
-              background: filter === tab.key ? "var(--primary-accent, #ff4c24)" : "rgba(255, 255, 255, 0.08)",
-              color: "#fff",
+              background: filter === tab.key ? "#64d800" : "rgba(255, 255, 255, 0.08)",
+              color: filter === tab.key ? "#111814" : "#fff",
+              fontWeight: filter === tab.key ? "700" : "500",
               border: "none",
               cursor: "pointer",
-              fontSize: "0.85rem"
+              fontSize: "0.85rem",
+              transition: "all 0.2s ease"
             }}
           >
             {tab.label}
@@ -125,20 +129,54 @@ const Orders = ({ url, token }) => {
             <div key={order._id} className="order-item">
               <img src={assets.parcel_icon} alt="Parcel" />
               <div>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "0.4rem" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "0.4rem", flexWrap: "wrap" }}>
                   <span
                     style={{
                       padding: "0.2rem 0.6rem",
                       borderRadius: "12px",
                       fontSize: "0.75rem",
-                      fontWeight: 600,
-                      background: order.payment ? "rgba(16, 185, 129, 0.2)" : "rgba(245, 158, 11, 0.2)",
-                      color: order.payment ? "#10b981" : "#f59e0b",
-                      border: `1px solid ${order.payment ? "rgba(16, 185, 129, 0.4)" : "rgba(245, 158, 11, 0.4)"}`
+                      fontWeight: 700,
+                      background: order.payment
+                        ? "rgba(100, 216, 0, 0.2)"
+                        : order.paymentMethod === "COD"
+                        ? "rgba(59, 130, 246, 0.2)"
+                        : "rgba(245, 158, 11, 0.2)",
+                      color: order.payment
+                        ? "#78f016"
+                        : order.paymentMethod === "COD"
+                        ? "#60a5fa"
+                        : "#fbbf24",
+                      border: `1px solid ${
+                        order.payment
+                          ? "rgba(100, 216, 0, 0.4)"
+                          : order.paymentMethod === "COD"
+                          ? "rgba(59, 130, 246, 0.4)"
+                          : "rgba(245, 158, 11, 0.4)"
+                      }`
                     }}
                   >
-                    {order.payment ? "✓ PAID" : "⏳ UNPAID"}
+                    {order.payment
+                      ? "✓ PAID (ONLINE)"
+                      : order.paymentMethod === "COD"
+                      ? "💵 CASH ON DELIVERY"
+                      : "⏳ UNPAID (PENDING)"}
                   </span>
+
+                  {order.promoCode && (
+                    <span
+                      style={{
+                        padding: "0.2rem 0.5rem",
+                        borderRadius: "10px",
+                        fontSize: "0.72rem",
+                        fontWeight: 600,
+                        background: "rgba(255, 255, 255, 0.08)",
+                        color: "#f7f9f7"
+                      }}
+                    >
+                      🎟️ {order.promoCode} (-₹{order.discountAmount || 0})
+                    </span>
+                  )}
+
                   <small style={{ color: "rgba(255, 255, 255, 0.5)" }}>
                     {order.date ? new Date(order.date).toLocaleDateString() : ""}
                   </small>
@@ -166,7 +204,7 @@ const Orders = ({ url, token }) => {
               </div>
 
               <div>
-                <p style={{ fontWeight: 600, fontSize: "1.1rem", color: "#fff" }}>₹{order.amount?.toFixed(2)}</p>
+                <p style={{ fontWeight: 700, fontSize: "1.1rem", color: "#78f016" }}>₹{order.amount?.toFixed(2)}</p>
                 <p style={{ fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.6)" }}>
                   {order.items?.length || 0} items
                 </p>

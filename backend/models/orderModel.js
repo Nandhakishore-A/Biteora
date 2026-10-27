@@ -58,8 +58,8 @@ const orderSchema = new mongoose.Schema(
             type: String,
             enum: [
                 "Pending Payment",
-                "Food Preparing",
                 "Confirmed",
+                "Food Preparing",
                 "Preparing",
                 "Out for Delivery",
                 "Delivered",
@@ -70,6 +70,19 @@ const orderSchema = new mongoose.Schema(
         payment: {
             type: Boolean,
             default: false
+        },
+        paymentMethod: {
+            type: String,
+            enum: ["Stripe", "COD", "Card"],
+            default: "Stripe"
+        },
+        promoCode: {
+            type: String,
+            default: ""
+        },
+        discountAmount: {
+            type: Number,
+            default: 0
         },
         paymentStatus: {
             type: String,

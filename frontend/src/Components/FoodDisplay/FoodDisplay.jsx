@@ -3,10 +3,21 @@ import "./FoodDisplay.css";
 import { StoreContext } from "../../Context/storeContext";
 import FoodItem from "../FoodItem/FoodItem";
 
-const FoodDisplay = ({ category, searchTerm = "", sortBy = "default" }) => {
+const FoodDisplay = ({ category, searchTerm = "", sortBy = "default", favOnly = false }) => {
   const { food_list } = useContext(StoreContext);
 
+  let favIds = [];
+  if (favOnly) {
+    try {
+      favIds = JSON.parse(localStorage.getItem("biteora_favorites") || "[]");
+    } catch {
+      favIds = [];
+    }
+  }
+
   let filteredFoods = (food_list || []).filter((item) => {
+    const itemId = item._id || item.id;
+    if (favOnly && !favIds.includes(itemId)) return false;
     const matchesCategory = category === "All" || item.category === category;
     const matchesSearch =
       !searchTerm.trim() ||
@@ -26,10 +37,13 @@ const FoodDisplay = ({ category, searchTerm = "", sortBy = "default" }) => {
       <div className="food-display-header-row">
         <div>
           <h2 className="food-section-title">
-            Popular Dishes <span className="title-category-tag">({category})</span>
+            {favOnly ? "Your Favorites" : "Popular Dishes"}{" "}
+            <span className="title-category-tag">({category})</span>
           </h2>
           <p className="food-section-sub">
-            Freshly prepared meals by top local chefs, delivered right to your doorstep.
+            {favOnly
+              ? "All your hand-picked meals saved in one convenient place."
+              : "Freshly prepared meals by top local chefs, delivered right to your doorstep."}
           </p>
         </div>
         <span className="results-badge">{filteredFoods.length} items</span>
@@ -37,9 +51,13 @@ const FoodDisplay = ({ category, searchTerm = "", sortBy = "default" }) => {
 
       {filteredFoods.length === 0 ? (
         <div className="food-empty-state">
-          <span className="empty-emoji">🍽️</span>
-          <h3>No dishes found</h3>
-          <p>Try searching for a different dish or select another category above.</p>
+          <span className="empty-emoji">{favOnly ? "🤍" : "🍽️"}</span>
+          <h3>{favOnly ? "No favorite dishes yet" : "No dishes found"}</h3>
+          <p>
+            {favOnly
+              ? "Tap the heart icon on any dish card to add it to your favorites."
+              : "Try searching for a different dish or select another category above."}
+          </p>
         </div>
       ) : (
         <div className="food-grid-container">

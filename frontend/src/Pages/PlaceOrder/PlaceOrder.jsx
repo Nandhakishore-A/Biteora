@@ -5,8 +5,22 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const PlaceOrder = () => {
-  const { getTotalCartAmount, token, food_list, cartItems, url } =
-    useContext(StoreContext);
+  const {
+    getTotalCartAmount,
+    token,
+    food_list,
+    cartItems,
+    url,
+    appliedPromo,
+    getDiscountAmount,
+    getDeliveryFee,
+    getFinalTotal,
+    clearCart
+  } = useContext(StoreContext);
+
+  const [paymentMethod, setPaymentMethod] = useState("COD");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -16,63 +30,90 @@ const PlaceOrder = () => {
     state: "",
     zipCode: "",
     country: "",
-    phone: "",
+    phone: ""
   });
 
   const onChangeHandler = (event) => {
-    setData((prev) => {
-      return {
-        ...prev,
-        [event.target.name]: event.target.value,
-      };
-    });
-  };
-
-  const placeOrder = async (event) => {
-    event.preventDefault();
-    let orderItems = [];
-    food_list.forEach((item) => {
-      if (cartItems[item._id] > 0) {
-        // create new object with item details and quantity
-        let itemInfo = { ...item };
-        itemInfo["quantity"] = cartItems[item._id];
-        orderItems.push(itemInfo);
-      }
-    });
-    let orderData = {
-      address: data,
-      items: orderItems,
-      totalAmount: getTotalCartAmount() + 2,
-    };
-    try {
-      let response = await axios.post(url + "/api/order/place", orderData, {
-        headers: {
-          token,
-        },
-      });
-      if (response.data.success) {
-        const {session_url} = response.data;
-        window.location.replace(session_url);
-      } else {
-        alert("Order placement failed. Please try again.");
-      }
-    } catch (error) {
-      alert(error.response?.data?.message || "Something went wrong. Please try again.");
-    }
+    setData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value
+    }));
   };
 
   const navigate = useNavigate();
 
-  useEffect(()=> {
-    if(!token || getTotalCartAmount() === 0) {
+  useEffect(() => {
+    if (!token || getTotalCartAmount() === 0) {
       navigate("/cart");
     }
-  }, [token, getTotalCartAmount, navigate])
+  }, [token, getTotalCartAmount, navigate]);
+
+  const placeOrder = async (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    const orderItems = [];
+    food_list.forEach((item) => {
+      const itemId = item._id || item.id;
+      if (cartItems[itemId] > 0) {
+        orderItems.push({
+          foodId: itemId,
+          name: item.name,
+          price: item.price,
+          quantity: cartItems[itemId],
+          image: item.image
+        });
+      }
+    });
+
+    const orderData = {
+      address: data,
+      items: orderItems,
+      paymentMethod,
+      promoCode: appliedPromo?.code || "",
+      totalAmount: getFinalTotal()
+    };
+
+    try {
+      const response = await axios.post(`${url}/api/order/place`, orderData, {
+        headers: {
+          token,
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      if (response.data.success) {
+        if (response.data.isCOD) {
+          clearCart();
+          navigate("/myorders");
+        } else if (response.data.session_url) {
+          window.location.replace(response.data.session_url);
+        } else {
+          clearCart();
+          navigate("/myorders");
+        }
+      } else {
+        alert(response.data.message || "Order placement failed. Please try again.");
+      }
+    } catch (error) {
+      alert(error.response?.data?.message || "Something went wrong placing your order. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const subtotal = getTotalCartAmount();
+  const discount = getDiscountAmount();
+  const deliveryFee = getDeliveryFee();
+  const finalTotal = getFinalTotal();
 
   return (
     <form className="place-order" onSubmit={placeOrder}>
+      {/* Left Column: Delivery Form */}
       <div className="place-order-left">
-        <p className="title">Delivery Information</p>
+        <h2 className="title">Delivery Address</h2>
+        <p className="order-subhead">Enter where you'd like your meal delivered.</p>
+
         <div className="multi-fields">
           <input
             type="text"
@@ -91,9 +132,10 @@ const PlaceOrder = () => {
             required
           />
         </div>
+
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Email Address"
           name="email"
           value={data.email}
           onChange={onChangeHandler}
@@ -101,12 +143,13 @@ const PlaceOrder = () => {
         />
         <input
           type="text"
-          placeholder="Street"
+          placeholder="Street Address, Apt / Suite"
           name="street"
           value={data.street}
           onChange={onChangeHandler}
           required
         />
+
         <div className="multi-fields">
           <input
             type="text"
@@ -118,17 +161,18 @@ const PlaceOrder = () => {
           />
           <input
             type="text"
-            placeholder="State"
+            placeholder="State / Province"
             name="state"
             value={data.state}
             onChange={onChangeHandler}
             required
           />
         </div>
+
         <div className="multi-fields">
           <input
             type="text"
-            placeholder="Zip code"
+            placeholder="Zip / Postal Code"
             name="zipCode"
             value={data.zipCode}
             onChange={onChangeHandler}
@@ -143,41 +187,108 @@ const PlaceOrder = () => {
             required
           />
         </div>
+
         <input
-          type="text"
-          placeholder="Phone"
+          type="tel"
+          placeholder="Contact Phone Number"
           name="phone"
           value={data.phone}
           onChange={onChangeHandler}
           required
         />
+
+        {/* Payment Method Selector */}
+        <div className="payment-method-block">
+          <h3 className="payment-title">Payment Method</h3>
+          <div className="payment-options-grid">
+            <label className={`payment-option-card ${paymentMethod === "COD" ? "active" : ""}`}>
+              <input
+                type="radio"
+                name="paymentMethod"
+                value="COD"
+                checked={paymentMethod === "COD"}
+                onChange={() => setPaymentMethod("COD")}
+              />
+              <div className="payment-card-content">
+                <span className="payment-icon">💵</span>
+                <div>
+                  <strong>Cash on Delivery</strong>
+                  <p>Pay with cash or UPI upon meal arrival</p>
+                </div>
+              </div>
+            </label>
+
+            <label className={`payment-option-card ${paymentMethod === "Stripe" ? "active" : ""}`}>
+              <input
+                type="radio"
+                name="paymentMethod"
+                value="Stripe"
+                checked={paymentMethod === "Stripe"}
+                onChange={() => setPaymentMethod("Stripe")}
+              />
+              <div className="payment-card-content">
+                <span className="payment-icon">💳</span>
+                <div>
+                  <strong>Online Card / UPI</strong>
+                  <p>Fast and encrypted payment via Stripe</p>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
       </div>
 
+      {/* Right Column: Order Summary */}
       <div className="place-order-right">
         <div className="cart-total">
-          <h2>Cart Total</h2>
-          <div>
-            <div className="cart-total-details">
-              <p>Subtotal</p>
-              <p>₹{getTotalCartAmount().toFixed(2)}</p>
-            </div>
-            <hr />
-            <div className="cart-total-details">
-              <p>Delivery Fee</p>
-              <p>₹{getTotalCartAmount() ? 2 : 0}</p>
-            </div>
-            <hr />
-            <div className="cart-total-details">
-              <b>Total</b>
-              <b>
-                ₹
-                {getTotalCartAmount()
-                  ? (getTotalCartAmount() + 2).toFixed(2)
-                  : 0}
-              </b>
-            </div>
+          <h2>Order Summary</h2>
+          
+          <div className="cart-total-details">
+            <span>Subtotal</span>
+            <span>₹{subtotal.toFixed(2)}</span>
           </div>
-          <button type="submit">PROCEED TO PAYMENT</button>
+
+          <div className="cart-total-details">
+            <span>Delivery Fee</span>
+            <span>
+              {deliveryFee === 0 ? (
+                <strong className="text-lime-free">FREE</strong>
+              ) : (
+                `₹${deliveryFee.toFixed(2)}`
+              )}
+            </span>
+          </div>
+
+          {discount > 0 && (
+            <div className="cart-total-details discount-row">
+              <span>Coupon ({appliedPromo?.code})</span>
+              <span className="discount-value">-₹{discount.toFixed(2)}</span>
+            </div>
+          )}
+
+          <div className="cart-summary-divider"></div>
+
+          <div className="cart-total-details grand-total">
+            <div>
+              <span>Final Total</span>
+              <small className="inclusive-text">(Includes taxes)</small>
+            </div>
+            <span className="grand-total-amount">₹{finalTotal.toFixed(2)}</span>
+          </div>
+
+          <button
+            type="submit"
+            className="btn-primary-lime place-order-submit-btn"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              "Confirming Order..."
+            ) : paymentMethod === "COD" ? (
+              "Confirm Cash on Delivery Order"
+            ) : (
+              "Proceed to Secure Payment"
+            )}
+          </button>
         </div>
       </div>
     </form>

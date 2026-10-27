@@ -5,6 +5,123 @@
   flex-direction: column;
 }
 
+/* Offers & Promo Section */
+.home-promos-section {
+  margin: 18px 0 28px;
+  padding: 22px 24px;
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 10px 30px rgba(50, 80, 40, 0.04);
+}
+
+.home-promos-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.promos-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #276b00;
+  margin-bottom: 2px;
+}
+
+.promos-heading {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.3px;
+}
+
+.promos-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.home-promos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 640px) {
+  .home-promos-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.promo-ticket {
+  padding: 16px 18px;
+  border-radius: var(--radius-lg);
+  border: 1.5px dashed;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.promo-ticket:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(50, 80, 40, 0.08);
+}
+
+.ticket-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ticket-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--text-dark);
+  letter-spacing: 0.3px;
+}
+
+.ticket-action {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.ticket-code-row {
+  display: flex;
+  align-items: center;
+}
+
+.ticket-code {
+  font-family: monospace;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--text-dark);
+  background: #ffffff;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.ticket-desc {
+  font-size: 12px;
+  color: #3f4e43;
+  line-height: 1.35;
+}
+
+/* Favorites Banner */
 .favorites-header-banner {
   display: flex;
   align-items: center;
