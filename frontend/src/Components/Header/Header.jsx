@@ -1,78 +1,83 @@
-import "./Header.css"
+import "./Header.css";
+import { assets } from "../../assets/assets";
 
 const Header = () => {
-  const handleViewMenuClick = () => {
+  const handleGetStartedClick = () => {
     const menuSection = document.getElementById("explore-menu");
-    if (!menuSection) return;
-
-    const navbar = document.querySelector(".navbar");
-    const navbarHeight = navbar ? navbar.offsetHeight : 0;
-    const scrollTop =
-      window.pageYOffset +
-      menuSection.getBoundingClientRect().top -
-      navbarHeight -
-      8;
-
-    window.scrollTo({ top: Math.max(0, scrollTop), behavior: "smooth" });
+    if (menuSection) {
+      menuSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
-    <section id="home-top" className="header">
-      <div className="header-bg-pattern"></div>
-      <div className="header-content">
-        <div className="header-tag">🔥 #1 Food Delivery App</div>
-        <h1 className="header-title">
-          Delicious Food,
-          <br />
-          <span className="gradient-text">Delivered Fast</span>
-        </h1>
-        <p className="header-subtitle">
-          Choose from a diverse menu featuring a delectable array of dishes
-          crafted with the finest ingredients and culinary expertise. Your
-          cravings, satisfied in minutes.
-        </p>
-        <div className="header-actions">
-          <button
-            type="button"
-            className="btn-gradient header-cta"
-            onClick={handleViewMenuClick}
-          >
-            Explore Menu
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </button>
-          <div className="header-stats">
-            <div className="stat-item">
-              <span className="stat-number">500+</span>
-              <span className="stat-label">Dishes</span>
+    <section id="home-top" className="hero-banner">
+      {/* Background Organic Wave Shape */}
+      <div className="hero-wave-shape"></div>
+
+      <div className="hero-inner">
+        {/* Left / Top Content: Matching Left Phone Header */}
+        <div className="hero-content">
+          <div className="hero-headline-group">
+            <h1 className="hero-title">Order Food</h1>
+            <p className="hero-script-sub script-text">Anytime Anywhere</p>
+          </div>
+
+          <p className="hero-desc">
+            Discover delicious meals delivered fast from your favorite local restaurants.
+          </p>
+
+          <div className="hero-cta-group">
+            <button
+              type="button"
+              className="btn-circle-dark hero-arrow-btn"
+              onClick={handleGetStartedClick}
+              aria-label="View menu"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+
+            <button
+              type="button"
+              className="btn-primary-lime hero-start-btn"
+              onClick={handleGetStartedClick}
+            >
+              Get started
+            </button>
+          </div>
+        </div>
+
+        {/* Right / Center Visual: Platter & Badges */}
+        <div className="hero-visual-container">
+          {/* 10% save Starburst badge (matches mockup) */}
+          <div className="hero-save-badge">
+            <div className="starburst-inner">
+              <span className="badge-percent">10%</span>
+              <span className="badge-label">save</span>
             </div>
-            <div className="stat-divider"></div>
-            <div className="stat-item">
-              <span className="stat-number">30min</span>
-              <span className="stat-label">Delivery</span>
-            </div>
-            <div className="stat-divider"></div>
-            <div className="stat-item">
-              <span className="stat-number">4.9★</span>
-              <span className="stat-label">Rating</span>
-            </div>
+            {/* Scalloped teeth ring */}
+            <div className="starburst-teeth"></div>
+          </div>
+
+          {/* Decorative floating starburst sparks (matches mockup) */}
+          <div className="deco-starburst star-1">✦</div>
+          <div className="deco-starburst star-2">✦</div>
+          <div className="deco-starburst star-3">✦</div>
+
+          {/* Food Platter Imagery */}
+          <div className="hero-platter-wrapper">
+            <img
+              src={assets.header_img}
+              alt="Mouthwatering burgers, crispy fries, and delicious sides"
+              className="hero-platter-img"
+            />
           </div>
         </div>
       </div>
-      <div className="header-visual">
-        <div className="header-glow"></div>
-        <div className="header-floating-cards">
-          <div className="floating-card fc-1">🍕</div>
-          <div className="floating-card fc-2">🍜</div>
-          <div className="floating-card fc-3">🍔</div>
-          <div className="floating-card fc-4">🥗</div>
-          <div className="floating-card fc-5">🍰</div>
-        </div>
-      </div>
     </section>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

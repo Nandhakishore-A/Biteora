@@ -1,36 +1,99 @@
-/* ===== Food Display ===== */
-.food-display {
-  padding: 20px 0 40px;
+/* ===== Biteora — Food Grid Section Styles ===== */
+
+.food-display-section {
+  margin: 20px 0 40px;
 }
 
-.food-display-title {
-  font-size: clamp(26px, 2.8vw, 36px);
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 32px;
+.food-display-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.food-section-title {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 800;
+  color: var(--text-dark);
   letter-spacing: -0.5px;
 }
 
-.food-display-grid {
+.title-category-tag {
+  color: var(--primary-lime-dark);
+  font-weight: 700;
+}
+
+.food-section-sub {
+  font-size: clamp(13px, 1.6vw, 15px);
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.results-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  color: #4a5c50;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  white-space: nowrap;
+}
+
+/* 2-Column on Mobile, 3-Column on Tablet, 4-Column on Desktop (PC) */
+.food-grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
 }
 
-@media (max-width: 768px) {
-  .food-display {
-    padding: 16px 0 30px;
-  }
-
-  .food-display-grid {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 16px;
+@media (min-width: 640px) {
+  .food-grid-container {
+    gap: 18px;
   }
 }
 
-@media (max-width: 480px) {
-  .food-display-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
+@media (min-width: 768px) {
+  .food-grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
+}
+
+@media (min-width: 1080px) {
+  .food-grid-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Empty State */
+.food-empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px dashed rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+.empty-emoji {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.food-empty-state h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.food-empty-state p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 4px;
 }

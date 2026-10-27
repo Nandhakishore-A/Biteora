@@ -1,105 +1,84 @@
-/* ===== App Download ===== */
+/* ===== Biteora — App Download Banner ===== */
+
 .app-download {
-  padding: 60px 0;
+  padding: 40px 0 20px;
 }
 
 .app-download-card {
   position: relative;
-  padding: 48px 40px;
-  background: var(--bg-glass);
-  border: 1px solid var(--border-subtle);
+  padding: 44px 28px;
+  background: linear-gradient(145deg, #ffffff 0%, #f4fce8 100%);
+  border: 1px solid rgba(100, 216, 0, 0.2);
   border-radius: var(--radius-xl);
   text-align: center;
   overflow: hidden;
+  box-shadow: 0 14px 36px rgba(70, 110, 40, 0.07);
 }
 
 .app-download-glow {
   position: absolute;
-  top: -40%;
+  top: -30%;
   left: 50%;
   transform: translateX(-50%);
-  width: 400px;
-  height: 300px;
-  background: radial-gradient(circle,
-    rgba(249, 115, 22, 0.08) 0%,
-    rgba(236, 72, 153, 0.05) 40%,
-    transparent 70%
-  );
+  width: 500px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(188, 247, 82, 0.25) 0%, transparent 70%);
   pointer-events: none;
 }
 
 .app-download-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 .app-download-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 18px;
-  background: var(--bg-glass-heavy);
-  border: 1px solid var(--border-subtle);
+  padding: 6px 16px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--radius-full);
   font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  margin-bottom: 20px;
+  font-weight: 700;
+  color: #111814;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .app-download-card h2 {
-  font-size: clamp(26px, 3vw, 36px);
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 12px;
-  letter-spacing: -0.5px;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.8px;
+  line-height: 1.2;
 }
 
 .app-download-card p {
   font-size: 15px;
   color: var(--text-muted);
-  max-width: 450px;
-  margin: 0 auto 32px;
+  margin-top: 10px;
   line-height: 1.6;
 }
 
 .app-download-buttons {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 14px;
+  margin-top: 24px;
   flex-wrap: wrap;
 }
 
 .app-download-buttons img {
-  width: 160px;
+  height: 44px;
   cursor: pointer;
-  transition: var(--transition-fast);
-  border-radius: var(--radius-sm);
+  transition: transform var(--transition-fast);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
 }
 
 .app-download-buttons img:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-glow);
-}
-
-/* --- Responsive --- */
-@media (max-width: 768px) {
-  .app-download-card {
-    padding: 36px 24px;
-  }
-
-  .app-download-buttons img {
-    width: 140px;
-  }
-}
-
-@media (max-width: 480px) {
-  .app-download-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .app-download-buttons img {
-    width: 180px;
-  }
+  transform: translateY(-2px) scale(1.03);
 }

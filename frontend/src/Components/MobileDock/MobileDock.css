@@ -1,0 +1,132 @@
+/* ===== Biteora — Mobile Bottom Dock (Matching Reference Bottom Bar) ===== */
+
+.mobile-dock-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 120;
+  padding: 0 16px calc(env(safe-area-inset-bottom, 10px) + 10px);
+  pointer-events: none;
+}
+
+@media (min-width: 900px) {
+  .mobile-dock-bar {
+    display: none; /* Desktop uses top navbar */
+  }
+}
+
+.mobile-dock-inner {
+  pointer-events: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 30px;
+  padding: 8px 12px;
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(60, 90, 40, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* Dock Tabs */
+.dock-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 6px 10px;
+  color: #7b8e81;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  border-radius: 16px;
+  position: relative;
+  flex: 1;
+}
+
+.dock-tab:hover {
+  color: #111814;
+}
+
+.dock-tab.active {
+  color: #55b700;
+  font-weight: 700;
+}
+
+.dock-label {
+  line-height: 1;
+}
+
+/* Green Active Indicator Dot */
+.dock-active-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--primary-lime);
+  margin-top: 1px;
+  box-shadow: 0 0 6px var(--primary-lime);
+}
+
+/* Center Elevated Floating Cart Button (Matches mockup exactly) */
+.dock-center-cart-slot {
+  position: relative;
+  width: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dock-floating-cart-btn {
+  position: absolute;
+  top: -24px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--lime-gradient);
+  color: #111814;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 22px rgba(100, 216, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.1);
+  border: 3px solid #ffffff;
+  transition: all var(--transition-bounce);
+  cursor: pointer;
+}
+
+.dock-floating-cart-btn:hover {
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 12px 28px rgba(100, 216, 0, 0.6);
+}
+
+.dock-floating-cart-btn:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.dock-floating-cart-btn.active {
+  background: #111814;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dock-cart-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: #111814;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+}

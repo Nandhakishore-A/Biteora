@@ -1,118 +1,58 @@
-/* ===== My Orders Page ===== */
+/* ===== Biteora — My Orders Page Styles ===== */
+
 .my-orders {
-  padding: 60px 0;
-  min-height: 60vh;
-  animation: fadeInUp 0.5s ease-out;
+  padding: 30px 0 60px;
+  min-height: 65vh;
+  animation: fadeInUp 0.4s ease-out;
 }
 
 .my-orders h2 {
-  font-size: clamp(28px, 3vw, 38px);
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 32px;
-  letter-spacing: -0.5px;
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+  letter-spacing: -0.6px;
 }
 
 .my-orders .container {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
-/* --- Order Row --- */
 .my-orders-order {
-  display: grid;
-  grid-template-columns: 44px 2fr 1fr 0.8fr 1.5fr 1fr;
-  align-items: center;
-  gap: 20px;
-  padding: 18px 20px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  font-size: 14px;
-  color: var(--text-secondary);
-  transition: var(--transition-fast);
+  display: flex;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  box-shadow: 0 8px 24px rgba(50, 80, 40, 0.05);
+  transition: all var(--transition-fast);
 }
 
 .my-orders-order:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--border-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(50, 80, 40, 0.09);
+  border-color: rgba(100, 216, 0, 0.3);
 }
 
 .my-orders-order img {
-  width: 40px;
-  height: 40px;
-  opacity: 0.7;
-  filter: invert(0.7);
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
 }
 
-.my-orders-order p span {
-  color: var(--accent);
-  margin-right: 4px;
-}
-
-.my-orders-order p b {
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-/* --- Status Badge --- */
-.my-orders-order p:has(span) {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* --- Track Button --- */
 .my-orders-order button {
-  padding: 10px 20px;
-  background: var(--bg-glass);
-  border: 1px solid var(--border-subtle);
+  padding: 10px 18px;
+  background: #111814;
+  color: #fff;
   border-radius: var(--radius-full);
-  color: var(--text-secondary);
   font-size: 13px;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: var(--transition-fast);
+  font-weight: 700;
+  transition: all var(--transition-fast);
 }
 
 .my-orders-order button:hover {
-  background: var(--accent-gradient);
-  border-color: transparent;
-  color: white;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-glow);
-}
-
-/* --- Responsive --- */
-@media (max-width: 900px) {
-  .my-orders-order {
-    grid-template-columns: 1fr 2fr 1fr;
-    row-gap: 8px;
-    padding: 14px 16px;
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 600px) {
-  .my-orders {
-    padding: 40px 0;
-  }
-
-  .my-orders-order {
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    padding: 14px;
-  }
-
-  .my-orders-order img {
-    width: 32px;
-    height: 32px;
-  }
-
-  .my-orders-order button {
-    grid-column: 1 / -1;
-    text-align: center;
-  }
+  background: var(--primary-lime);
+  color: #111814;
 }
