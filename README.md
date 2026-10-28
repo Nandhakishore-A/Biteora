@@ -152,7 +152,7 @@ Expected output:
 ### 1. Clone & Configure
 
 ```bash
-git clone https://github.com/karthikeyantoff/Biteora.git
+git clone https://github.com/Nandhakishore-A/Biteora.git
 cd Biteora
 ```
 
@@ -207,6 +207,6 @@ All three applications are continuously deployed on **Vercel** via GitHub integr
 
 ## 👤 Author & Attribution
 
-- **Forward Deployed Engineer:** [Karthikeyan](https://github.com/karthikeyantoff) (`karthikeyantoff`)
+- **Developer:** [Nandhakishore-A](https://github.com/Nandhakishore-A) (`Nandhakishore-A`)
 - **Original Starter Codebase Attribution:** Based on an open-source project by Maulik Gupta, customized, security-hardened, and extended into Biteora.
 - **License:** ISC
