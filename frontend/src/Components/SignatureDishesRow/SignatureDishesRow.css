@@ -1,0 +1,233 @@
+/* ===== Biteora — Signature Dishes Row (Matches Mockup Bottom Row) ===== */
+
+.signature-dishes-section {
+  margin: 16px 0 32px;
+}
+
+.signature-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+
+.signature-eyebrow {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #55b700;
+  margin-bottom: 4px;
+}
+
+.signature-title {
+  font-size: clamp(20px, 2.6vw, 24px);
+  font-weight: 800;
+  color: #111a14;
+  letter-spacing: -0.5px;
+}
+
+.signature-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sig-arrow-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  color: var(--text-dark);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sig-arrow-btn:hover {
+  background: #f4fbf0;
+  border-color: #64d800;
+  color: #276b00;
+  transform: translateY(-1px);
+}
+
+/* Horizontal Card Scroller */
+.signature-scroller {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 6px 2px 14px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.signature-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Card (Matches reference bottom row) */
+.signature-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 260px;
+  max-width: 285px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+  padding: 10px 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.signature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  border-color: rgba(100, 216, 0, 0.3);
+}
+
+/* Left Image Box */
+.sig-image-box {
+  width: 68px;
+  height: 68px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f1f5f9;
+}
+
+.sig-food-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.signature-card:hover .sig-food-thumb {
+  transform: scale(1.06);
+}
+
+/* Right Details Column */
+.sig-details-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sig-dish-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111a14;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 3px;
+  line-height: 1.25;
+}
+
+.sig-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.sig-rating-text {
+  font-weight: 700;
+  color: #0f172a;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.sig-star {
+  color: #f59e0b;
+  font-size: 12px;
+}
+
+.sig-bullet {
+  color: #cbd5e1;
+  font-size: 10px;
+}
+
+.sig-preptime-text {
+  color: #64748b;
+}
+
+/* Price & Add Button Row */
+.sig-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sig-price {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #111a14;
+}
+
+.sig-add-circle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #64d800;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 6px rgba(100, 216, 0, 0.35);
+}
+
+.sig-add-circle-btn:hover {
+  background: #52b800;
+  transform: scale(1.1);
+}
+
+/* Qty Counter inside card */
+.sig-qty-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f4fbf0;
+  border: 1px solid #64d800;
+  border-radius: var(--radius-full);
+  padding: 2px 6px;
+}
+
+.sig-counter-btn {
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  font-weight: 800;
+  color: #276b00;
+  cursor: pointer;
+  padding: 0 2px;
+}
+
+.sig-counter-num {
+  font-size: 12px;
+  font-weight: 800;
+  color: #111a14;
+  min-width: 12px;
+  text-align: center;
+}

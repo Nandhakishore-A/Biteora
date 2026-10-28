@@ -82,52 +82,40 @@ export const assets = {
 
 export const menu_list = [
     {
-        menu_name: "Burger",
-        menu_image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&auto=format&fit=crop&q=80"
+        menu_name: "Biryani",
+        menu_image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=160&auto=format&fit=crop&q=80"
     },
     {
         menu_name: "Pizza",
-        menu_image: "https://images.unsplash.com/photo-1604382355076-af4b0eb60143?w=200&auto=format&fit=crop&q=80"
+        menu_image: "https://images.unsplash.com/photo-1604382355076-af4b0eb60143?w=160&auto=format&fit=crop&q=80"
     },
     {
-        menu_name: "Biryani",
-        menu_image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=200&auto=format&fit=crop&q=80"
+        menu_name: "Burger",
+        menu_image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=160&auto=format&fit=crop&q=80"
     },
     {
-        menu_name: "Drinks",
-        menu_image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=200&auto=format&fit=crop&q=80"
+        menu_name: "South Indian",
+        menu_image: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=160&auto=format&fit=crop&q=80"
     },
     {
-        menu_name: "Cake",
-        menu_image: menu_5
+        menu_name: "Chinese",
+        menu_image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=160&auto=format&fit=crop&q=80"
     },
     {
-        menu_name: "Salad",
-        menu_image: menu_1
-    },
-    {
-        menu_name: "Rolls",
-        menu_image: menu_2
+        menu_name: "Snacks",
+        menu_image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=160&auto=format&fit=crop&q=80"
     },
     {
         menu_name: "Desserts",
-        menu_image: menu_3
+        menu_image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=160&auto=format&fit=crop&q=80"
     },
     {
-        menu_name: "Sandwich",
-        menu_image: menu_4
+        menu_name: "Beverages",
+        menu_image: "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=160&auto=format&fit=crop&q=80"
     },
     {
-        menu_name: "Pure Veg",
-        menu_image: menu_6
-    },
-    {
-        menu_name: "Pasta",
-        menu_image: menu_7
-    },
-    {
-        menu_name: "Noodles",
-        menu_image: menu_8
+        menu_name: "Healthy",
+        menu_image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=160&auto=format&fit=crop&q=80"
     }
 ]
 

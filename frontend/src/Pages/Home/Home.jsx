@@ -5,6 +5,7 @@ import Header from "../../Components/Header/Header";
 import "./Home.css";
 import FoodDisplay from "../../Components/FoodDisplay/FoodDisplay";
 import TrendingDishes from "../../Components/TrendingDishes/TrendingDishes";
+import SignatureDishesRow from "../../Components/SignatureDishesRow/SignatureDishesRow";
 import FoodModal from "../../Components/FoodModal/FoodModal";
 import AppDownload from "../../Components/AppDownload/AppDownload";
 import { StoreContext } from "../../Context/storeContext";
@@ -120,10 +121,26 @@ const Home = ({ showOnlyFavorites, setShowOnlyFavorites }) => {
 
   return (
     <div className="home-container">
-      <Header />
+      <Header setSearchTerm={setSearchTerm} setCategory={setCategory} />
+
+      {/* Category Discovery Pills Row (Exact Mockup Layout) */}
+      <ExploreMenu
+        category={category}
+        setCategory={setCategory}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+      />
+
+      {/* Signature Dishes Horizontal Row (8 Dishes from Mockup) */}
+      <SignatureDishesRow
+        category={category}
+        onSelectDish={setSelectedDish}
+      />
 
       {/* Interactive Offers & Promo Codes Strip */}
-      <section className="home-promos-section" aria-label="Special Offers">
+      <section id="home-promos" className="home-promos-section" aria-label="Special Offers">
         <div className="home-promos-header">
           <div>
             <span className="promos-eyebrow">⚡ Today's Top Offers</span>
@@ -159,16 +176,6 @@ const Home = ({ showOnlyFavorites, setShowOnlyFavorites }) => {
 
       {/* Chef's Specials & Trending Dishes Carousel (Interactive Showcase) */}
       <TrendingDishes onSelectDish={setSelectedDish} />
-
-      {/* Category Discovery & Search Filter */}
-      <ExploreMenu
-        category={category}
-        setCategory={setCategory}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        sortBy={sortBy}
-        setSortBy={setSortBy}
-      />
 
       {/* Main Dishes Grid with Live Filter Pills & Dish Modal */}
       <FoodDisplay
