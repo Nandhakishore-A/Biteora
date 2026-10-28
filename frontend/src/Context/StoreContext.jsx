@@ -81,9 +81,9 @@ const StoreContextProvider = (props) => {
         if (subtotal === 0) {
             return { success: false, message: "Add items to your cart before applying a coupon." };
         }
-        if (clean === "BITEORA10") {
-            setAppliedPromo({ code: "BITEORA10", discountPercent: 10, label: "10% Off Biteora Special" });
-            return { success: true, message: "Coupon BITEORA10 applied! 10% discount added." };
+        if (clean === "BITEORA10" || clean === "BITE10") {
+            setAppliedPromo({ code: clean, discountPercent: 10, label: "10% Off Biteora Special" });
+            return { success: true, message: `Coupon ${clean} applied! 10% discount added.` };
         }
         if (clean === "WELCOME50") {
             if (subtotal < 200) {
@@ -96,7 +96,7 @@ const StoreContextProvider = (props) => {
             setAppliedPromo({ code: "FREEDEL", freeDelivery: true, label: "Free Delivery Waived" });
             return { success: true, message: "Coupon FREEDEL applied! ₹2 delivery fee waived." };
         }
-        return { success: false, message: "Invalid coupon. Use BITEORA10, WELCOME50, or FREEDEL." };
+        return { success: false, message: "Invalid coupon. Use BITE10, BITEORA10, WELCOME50, or FREEDEL." };
     };
 
     const removePromoCode = () => {
@@ -106,7 +106,7 @@ const StoreContextProvider = (props) => {
     const getDiscountAmount = () => {
         const subtotal = getTotalCartAmount();
         if (!appliedPromo || subtotal === 0) return 0;
-        if (appliedPromo.code === "BITEORA10") {
+        if (appliedPromo.code === "BITEORA10" || appliedPromo.code === "BITE10") {
             return Math.round(subtotal * 0.10);
         }
         if (appliedPromo.code === "WELCOME50") {

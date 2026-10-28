@@ -3,10 +3,11 @@ import "./Cart.css";
 import { StoreContext } from "../../Context/storeContext";
 import { useNavigate } from "react-router-dom";
 
-const Cart = () => {
+const Cart = ({ setShowLogin }) => {
   const {
     cartItems,
     food_list,
+    addToCart,
     removeFromCart,
     getTotalCartAmount,
     appliedPromo,
@@ -15,6 +16,7 @@ const Cart = () => {
     getDiscountAmount,
     getDeliveryFee,
     getFinalTotal,
+    token,
     url
   } = useContext(StoreContext);
 
@@ -40,6 +42,7 @@ const Cart = () => {
   };
 
   const quickPromos = [
+    { code: "BITE10", label: "10% OFF" },
     { code: "BITEORA10", label: "10% OFF" },
     { code: "WELCOME50", label: "₹50 OFF" },
     { code: "FREEDEL", label: "FREE DELIVERY" }
@@ -96,7 +99,27 @@ const Cart = () => {
                       <span className="cart-item-cat">{item.category}</span>
                     </div>
                     <span className="cart-item-price">₹{item.price}</span>
-                    <span className="cart-item-qty">{cartItems[itemId]}</span>
+                    <div className="cart-qty-stepper">
+                      <button
+                        type="button"
+                        className="cart-stepper-btn"
+                        onClick={() => removeFromCart(itemId)}
+                        aria-label="Decrease quantity"
+                        title="Decrease"
+                      >
+                        −
+                      </button>
+                      <span className="cart-item-qty">{cartItems[itemId]}</span>
+                      <button
+                        type="button"
+                        className="cart-stepper-btn"
+                        onClick={() => addToCart(itemId)}
+                        aria-label="Increase quantity"
+                        title="Increase"
+                      >
+                        +
+                      </button>
+                    </div>
                     <span className="cart-item-total">
                       ₹{(item.price * cartItems[itemId]).toFixed(2)}
                     </span>
@@ -243,12 +266,24 @@ const Cart = () => {
                 <span className="grand-total-amount">₹{finalTotal.toFixed(2)}</span>
               </div>
 
+              {!token && (
+                <p className="cart-signin-notice">
+                  🔒 Please sign in to finalize your delivery address & order
+                </p>
+              )}
+
               <button
                 type="button"
                 className="btn-primary-lime cart-checkout-btn"
-                onClick={() => navigate("/order")}
+                onClick={() => {
+                  if (!token) {
+                    if (setShowLogin) setShowLogin(true);
+                  } else {
+                    navigate("/order");
+                  }
+                }}
               >
-                Proceed to Checkout
+                {!token ? "Sign In to Checkout" : "Proceed to Checkout"}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"

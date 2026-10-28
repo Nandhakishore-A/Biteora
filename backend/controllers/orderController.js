@@ -96,7 +96,7 @@ export const placeOrder = async (req, res) => {
         let appliedDeliveryFee = DELIVERY_FEE;
         const cleanPromo = String(promoCode || "").trim().toUpperCase();
 
-        if (cleanPromo === "BITEORA10") {
+        if (cleanPromo === "BITEORA10" || cleanPromo === "BITE10") {
             discountAmount = Math.round(subtotal * 0.10);
         } else if (cleanPromo === "WELCOME50") {
             if (subtotal >= 200) {

@@ -381,6 +381,274 @@ export const dishes = [
     isVeg: true,
     tag: "Chef Special",
     calories: "210 kcal"
+  },
+  {
+    name: "Iced Caramel Macchiato",
+    description: "Freshly pulled espresso poured over cold velvety milk, vanilla syrup and rich buttery caramel drizzle",
+    price: 139,
+    category: "Beverages",
+    image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.7,
+    reviewsCount: 195,
+    prepTime: "10 mins",
+    isVeg: true,
+    tag: "Barista Pick",
+    calories: "180 kcal"
+  },
+  {
+    name: "Royal Kesar Badam Milk",
+    description: "Slow-simmered whole milk infused with Kashmiri saffron strands, crushed almonds, pistachios and green cardamom",
+    price: 119,
+    category: "Beverages",
+    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 160,
+    prepTime: "10 mins",
+    isVeg: true,
+    tag: "Traditional",
+    calories: "220 kcal"
+  },
+
+  // Expanded Biryani
+  {
+    name: "Hyderabadi Mutton Dum Biryani",
+    description: "Tender pieces of goat meat marinated in spiced yogurt and browned onions, dum cooked with royal long-grain basmati rice",
+    price: 349,
+    category: "Biryani",
+    image: "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 520,
+    prepTime: "35 mins",
+    isVeg: false,
+    tag: "Chef Special",
+    calories: "620 kcal"
+  },
+  {
+    name: "Paneer Tikka Biryani",
+    description: "Clay-oven roasted malai paneer cubes tossed in aromatic biryani masala, layered with saffron basmati rice",
+    price: 219,
+    category: "Biryani",
+    image: "https://images.unsplash.com/photo-1642821373181-696a54913e93?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.7,
+    reviewsCount: 290,
+    prepTime: "25 mins",
+    isVeg: true,
+    tag: "Popular",
+    calories: "480 kcal"
+  },
+
+  // Expanded Pizza
+  {
+    name: "Farmhouse Veggie Supreme Pizza",
+    description: "Loaded with bell peppers, baby corn, black olives, red onions and garden mushrooms over melted mozzarella",
+    price: 279,
+    category: "Pizza",
+    image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 360,
+    prepTime: "25 mins",
+    isVeg: true,
+    tag: "Bestseller",
+    calories: "540 kcal"
+  },
+  {
+    name: "Smoky BBQ Chicken Pizza",
+    description: "Tender shredded chicken glazed in honey BBQ sauce, smoked gouda, red onion slices and fresh cilantro",
+    price: 329,
+    category: "Pizza",
+    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 410,
+    prepTime: "25 mins",
+    isVeg: false,
+    tag: "Chef Special",
+    calories: "610 kcal"
+  },
+
+  // Expanded Burger
+  {
+    name: "Truffle Mushroom Swiss Burger",
+    description: "Savory sautéed cremini mushrooms with Swiss cheese melt, black truffle mayo and crisp butter lettuce on a brioche bun",
+    price: 219,
+    category: "Burger",
+    image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 280,
+    prepTime: "20 mins",
+    isVeg: true,
+    tag: "Gourmet",
+    calories: "490 kcal"
+  },
+  {
+    name: "Peri Peri Crispy Chicken Burger",
+    description: "Extra crunchy golden chicken breast tossed in African bird's eye chili dust with spicy garlic aioli and crunchy slaw",
+    price: 199,
+    category: "Burger",
+    image: "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.7,
+    reviewsCount: 330,
+    prepTime: "20 mins",
+    isVeg: false,
+    tag: "Trending",
+    calories: "510 kcal"
+  },
+
+  // Expanded South Indian
+  {
+    name: "Ghee Podi Idli Platter (4 Pcs)",
+    description: "Steamed fluffy rice cakes tossed in pure desi ghee and spicy gun powder masala, served with coconut chutney",
+    price: 99,
+    category: "South Indian",
+    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 460,
+    prepTime: "15 mins",
+    isVeg: true,
+    tag: "Must Try",
+    calories: "240 kcal"
+  },
+  {
+    name: "Medu Vada Sambar Combo (3 Pcs)",
+    description: "Crispy golden lentil fritters seasoned with crushed black pepper, curry leaves and ginger, served with piping hot sambar",
+    price: 89,
+    category: "South Indian",
+    image: "https://images.unsplash.com/photo-1626074353765-517a681e40be?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.7,
+    reviewsCount: 380,
+    prepTime: "15 mins",
+    isVeg: true,
+    tag: "Classic",
+    calories: "280 kcal"
+  },
+
+  // Expanded Chinese
+  {
+    name: "Schezwan Chicken Fried Rice",
+    description: "Wok-fried Jasmine rice with juicy chicken bites, scrambled eggs, bell peppers and fiery homemade Schezwan sauce",
+    price: 189,
+    category: "Chinese",
+    image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.7,
+    reviewsCount: 260,
+    prepTime: "20 mins",
+    isVeg: false,
+    tag: "Popular",
+    calories: "490 kcal"
+  },
+  {
+    name: "Crispy Chilli Paneer Dry",
+    description: "Golden fried cottage cheese cubes tossed with garlic, green chilies, bell peppers and tangy dark soy reduction",
+    price: 179,
+    category: "Chinese",
+    image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 320,
+    prepTime: "15 mins",
+    isVeg: true,
+    tag: "Chef Special",
+    calories: "380 kcal"
+  },
+
+  // Expanded Snacks
+  {
+    name: "Dahi Puri Chaat Explosion (6 Pcs)",
+    description: "Crispy puffed puris filled with boiled potatoes and chickpeas, smothered in chilled beaten sweet yogurt and tamarind chutney",
+    price: 79,
+    category: "Snacks",
+    image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 420,
+    prepTime: "10 mins",
+    isVeg: true,
+    tag: "Street Favorite",
+    calories: "210 kcal"
+  },
+  {
+    name: "Loaded Cheesy Corn Nachos",
+    description: "Stone-ground corn tortilla chips baked with sweet corn kernels, jalapenos, melted cheddar and fresh tomato salsa",
+    price: 149,
+    category: "Snacks",
+    image: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.6,
+    reviewsCount: 230,
+    prepTime: "15 mins",
+    isVeg: true,
+    tag: "Crunchy",
+    calories: "390 kcal"
+  },
+
+  // Expanded Desserts
+  {
+    name: "Classic New York Cheesecake",
+    description: "Dense and velvety cream cheese filling baked on a golden buttery graham cracker crust, topped with fresh strawberry compote",
+    price: 169,
+    category: "Desserts",
+    image: "https://images.unsplash.com/photo-1524351199678-941a58a3df50?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 440,
+    prepTime: "10 mins",
+    isVeg: true,
+    tag: "Bestseller",
+    calories: "360 kcal"
+  },
+  {
+    name: "Warm Molten Choco Lava Cake",
+    description: "Individual dark chocolate cake baked with a flowing center of melted ganache, served with dusted icing sugar",
+    price: 129,
+    category: "Desserts",
+    image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 390,
+    prepTime: "15 mins",
+    isVeg: true,
+    tag: "Chef Special",
+    calories: "410 kcal"
+  },
+
+  // Expanded Healthy
+  {
+    name: "Quinoa Avocado Super Bowl",
+    description: "Fluffy tri-color quinoa, sliced Haas avocado, roasted chickpeas, baby spinach, cherry tomatoes and lemon-tahini dressing",
+    price: 269,
+    category: "Healthy",
+    image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.9,
+    reviewsCount: 360,
+    prepTime: "15 mins",
+    isVeg: true,
+    tag: "Superfood",
+    calories: "380 kcal"
+  },
+  {
+    name: "Grilled Mediterranean Chicken Salad",
+    description: "Herb-marinated grilled chicken breast slices on mixed greens, Kalamata olives, English cucumbers, feta and olive oil vinaigrette",
+    price: 259,
+    category: "Healthy",
+    image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=600&auto=format&fit=crop&q=80",
+    isAvailable: true,
+    rating: 4.8,
+    reviewsCount: 290,
+    prepTime: "20 mins",
+    isVeg: false,
+    tag: "High Protein",
+    calories: "410 kcal"
   }
 ];
 

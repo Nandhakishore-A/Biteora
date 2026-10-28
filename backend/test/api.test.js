@@ -26,13 +26,13 @@ before(async () => {
 });
 
 after(async () => {
-    if (isConnected && mongoose.connection.readyState === 1) {
+    if (mongoose.connection.readyState !== 0) {
         if (testUserId) {
-            await userModel.findByIdAndDelete(testUserId);
-            await orderModel.deleteMany({ userId: testUserId });
+            try { await userModel.findByIdAndDelete(testUserId); } catch {}
+            try { await orderModel.deleteMany({ userId: testUserId }); } catch {}
         }
         if (testFoodId) {
-            await foodModel.findByIdAndDelete(testFoodId);
+            try { await foodModel.findByIdAndDelete(testFoodId); } catch {}
         }
         await mongoose.disconnect();
     }

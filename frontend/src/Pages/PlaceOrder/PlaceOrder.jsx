@@ -4,7 +4,7 @@ import { StoreContext } from "../../Context/storeContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const PlaceOrder = () => {
+const PlaceOrder = ({ setShowLogin }) => {
   const {
     getTotalCartAmount,
     token,
@@ -43,10 +43,13 @@ const PlaceOrder = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token || getTotalCartAmount() === 0) {
+    if (!token) {
+      if (setShowLogin) setShowLogin(true);
+      navigate("/cart");
+    } else if (getTotalCartAmount() === 0) {
       navigate("/cart");
     }
-  }, [token, getTotalCartAmount, navigate]);
+  }, [token, getTotalCartAmount, navigate, setShowLogin]);
 
   const placeOrder = async (event) => {
     event.preventDefault();
