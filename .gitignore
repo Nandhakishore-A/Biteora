@@ -8,6 +8,7 @@ node_modules/
 
 # Build output
 dist/
+.vercel/
 
 # Uploads (keep the directory, ignore contents)
 backend/uploads/*

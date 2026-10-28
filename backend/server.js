@@ -40,6 +40,14 @@ app.use((req, res, next) => {
 
 app.use(cors({ origin: true, credentials: true }));
 
+// Serverless / Vercel: Connect DB on incoming request if disconnected
+app.use(async (req, res, next) => {
+    if (mongoose.connection.readyState === 0 && process.env.MONGODB_URI) {
+        connectDB().catch(() => {});
+    }
+    next();
+});
+
 // Skip JSON body parser for Stripe webhook to preserve raw binary stream
 app.use((req, res, next) => {
     if (req.originalUrl === "/api/order/webhook") {

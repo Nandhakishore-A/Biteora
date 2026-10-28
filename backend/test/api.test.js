@@ -1,7 +1,8 @@
 import { test, describe, before, after } from "node:test";
 import assert from "node:assert/strict";
 import "dotenv/config";
-import app from "../server.js";
+process.env.NODE_ENV = "test";
+const { default: app } = await import("../server.js");
 import { connectDB } from "../config/db.js";
 import userModel from "../models/userModel.js";
 import foodModel from "../models/foodModel.js";
