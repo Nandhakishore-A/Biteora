@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar/Navbar"
 import Sidebar from "./components/Sidebar/Sidebar"
 import { Navigate, Route, Routes, useLocation } from "react-router-dom"
+import Dashboard from "./pages/Dashboard/Dashboard"
 import Add from "./pages/Add/Add"
 import List from "./pages/List/List"
 import Orders from "./pages/Orders/Orders"
@@ -10,6 +11,18 @@ import "react-toastify/dist/ReactToastify.css"
 import { useState, useEffect } from "react"
 
 const pageConfig = {
+  "/": {
+    kicker: "Overview",
+    title: "Operations Dashboard",
+    description: "Real-time kitchen orders, menu metrics, revenue overview and system status.",
+    tags: ["Live KPI", "Kitchen queue", "Store overview"],
+  },
+  "/orders": {
+    kicker: "Fulfillment",
+    title: "Track active orders",
+    description: "Move orders through the delivery pipeline with a clean, readable workflow.",
+    tags: ["Kitchen queue", "Delivery status", "Order flow"],
+  },
   "/add": {
     kicker: "Catalog",
     title: "Add menu items",
@@ -22,45 +35,41 @@ const pageConfig = {
     description: "Review every item in the catalog and remove anything that should no longer be live.",
     tags: ["Live catalog", "Quick cleanup", "Menu control"],
   },
-  "/orders": {
-    title: "Track active orders",
-    description: "Move orders through the delivery pipeline with a clean, readable workflow.",
-    tags: ["Kitchen queue", "Delivery status", "Order flow"],
-  },
 }
-
 
 const App = () => {
   const url = (import.meta.env.VITE_API_URL || "http://localhost:4000").replace(/\/+$/, "");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [token, setToken] = useState(localStorage.getItem("adminToken") || "");
+  const [isAuthenticated, setIsAuthenticated] = useState(Boolean(localStorage.getItem("adminToken")));
   const location = useLocation();
-  const showHero = location.pathname !== "/orders";
-  const currentView = pageConfig[location.pathname] || {
-    kicker: "Biteora Admin",
-    title: "Restaurant control center",
-    description: "Keep the menu and order pipeline aligned from one clean dashboard.",
-    tags: ["Menu updates", "Order monitoring", "Operational clarity"],
-  };
+  const showHero = location.pathname !== "/orders" && location.pathname !== "/";
+  const currentView = pageConfig[location.pathname] || pageConfig["/"];
 
   useEffect(() => {
-    const token = localStorage.getItem("adminToken");
-    if (token) {
-      setTimeout(() => {
-        setIsAuthenticated(true);
-      }, 0);
+    const savedToken = localStorage.getItem("adminToken");
+    if (savedToken) {
+      setToken(savedToken);
+      setIsAuthenticated(true);
     }
   }, []);
 
+  const handleLoginSuccess = () => {
+    const savedToken = localStorage.getItem("adminToken") || "";
+    setToken(savedToken);
+    setIsAuthenticated(true);
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
+    setToken("");
     setIsAuthenticated(false);
   };
 
   if (!isAuthenticated) {
     return (
       <div>
-        <ToastContainer />
-        <Login url={url} onLoginSuccess={() => setIsAuthenticated(true)} />
+        <ToastContainer position="top-right" autoClose={2200} theme="dark" />
+        <Login url={url} onLoginSuccess={handleLoginSuccess} />
       </div>
     );
   }
@@ -91,16 +100,17 @@ const App = () => {
 
           <div className="route-panel">
             <Routes>
-              <Route path="/" element={<Navigate to="/add" replace />} />
+              <Route path="/" element={<Dashboard url={url} token={token} />} />
+              <Route path="/orders" element={<Orders url={url} token={token} />} />
               <Route path="/add" element={<Add url={url} />} />
               <Route path="/list" element={<List url={url} />} />
-              <Route path="/orders" element={<Orders url={url} token={localStorage.getItem("adminToken")} />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>
         </main>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

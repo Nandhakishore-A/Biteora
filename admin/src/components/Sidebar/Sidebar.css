@@ -43,6 +43,7 @@
   gap: 12px;
   margin-top: 4px;
 }
+
 .sidebar-option {
   display: flex;
   align-items: center;
@@ -53,8 +54,10 @@
   color: var(--text-secondary);
   background: transparent;
   transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+  text-decoration: none;
 }
-.sidebar-option.active{
+
+.sidebar-option.active {
   background: var(--accent-soft);
   border-color: var(--accent-border);
   color: var(--text-primary);
@@ -67,14 +70,17 @@
   border-color: var(--border-subtle);
 }
 
-.sidebar-option img {
+.sidebar-option img,
+.sidebar-option svg {
   width: 18px;
   height: 18px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .sidebar-option p {
   font-weight: 600;
+  font-size: 14px;
 }
 
 @media (max-width: 900px) {
