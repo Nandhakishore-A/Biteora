@@ -208,5 +208,4 @@ All three applications are continuously deployed on **Vercel** via GitHub integr
 ## 👤 Author & Attribution
 
 - **Developer:** [Nandhakishore-A](https://github.com/Nandhakishore-A) (`Nandhakishore-A`)
-- **Original Starter Codebase Attribution:** Based on an open-source project by Maulik Gupta, customized, security-hardened, and extended into Biteora.
 - **License:** ISC
