@@ -31,7 +31,7 @@ Deploy the backend first so you have its live production URL (e.g., `https://bit
 
 | Key | Example / Recommended Value | Description |
 | :--- | :--- | :--- |
-| `MONGODB_URI` | `mongodb+srv://...` | Your MongoDB Atlas connection string |
+| `MONGODB_URI` | `mongodb+srv://nandhakishore252_db_user:1KUiKaVg7dKstxFM@cluster0.k07nk6k.mongodb.net/biteora?retryWrites=true&w=majority` | Your MongoDB Atlas connection string |
 | `JWT_SECRET` | `biteora_super_jwt_secret_key_2026_secure_random` | Secret key for signing customer JWT tokens |
 | `ADMIN_SECRET_KEY` | `biteora_admin_secret_key_2026` | Admin authentication secret key |
 | `ADMIN_PASSWORD` | `BiteoraAdmin2026!` | Admin one-click login password |
