@@ -14,8 +14,6 @@ export const adminLogin = async (req, res) => {
         const isMatch =
             cleanPassword === "BiteoraAdmin2026!" ||
             rawPassword === "BiteoraAdmin2026!" ||
-            cleanPassword === "FeastDashAdmin2026!" ||
-            rawPassword === "FeastDashAdmin2026!" ||
             (adminPassword && (cleanPassword === adminPassword || rawPassword === adminPassword));
 
         if (!isMatch) {

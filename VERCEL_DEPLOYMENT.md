@@ -8,30 +8,30 @@ This guide covers how to deploy the entire Biteora platform (Customer Storefront
 
 Biteora is structured as a monorepo with three independent sub-projects:
 
-| Component | Directory | Tech Stack | Vercel Framework Preset |
-| :--- | :--- | :--- | :--- |
-| **Customer Storefront** | `frontend` | React 19 + Vite 7 | **Vite** |
-| **Admin Dashboard** | `admin` | React 19 + Vite 7 | **Vite** |
-| **Backend REST API** | `backend` | Express 5 Serverless | **Other / Node.js** |
+| Component | Directory | Tech Stack | Vercel Framework Preset | Live Production URL |
+| :--- | :--- | :--- | :--- | :--- |
+| **Backend REST API** | `backend` | Express 5 Serverless | **Other / Node.js** | [https://biteorabackend.vercel.app](https://biteorabackend.vercel.app) |
+| **Customer Storefront** | `frontend` | React 19 + Vite 7 | **Vite** | [https://biteora-frontend.vercel.app](https://biteora-frontend.vercel.app) |
+| **Admin Dashboard** | `admin` | React 19 + Vite 7 | **Vite** | [https://biteora-admin.vercel.app](https://biteora-admin.vercel.app) |
 
-Each component can be deployed as an independent Vercel project linked to your GitHub repository `https://github.com/Nandhakishore-A/Biteora`.
+Each component is deployed as an independent Vercel project linked to your GitHub repository [`https://github.com/Nandhakishore-A/Biteora`](https://github.com/Nandhakishore-A/Biteora).
 
 ---
 
 ## 1. Deploy the Backend REST API
 
-Deploy the backend first so you have its live production URL (e.g., `https://biteora-backend.vercel.app`) to plug into the frontend and admin.
+Deploy the backend first so you have its live production URL (`https://biteorabackend.vercel.app`) to plug into the frontend and admin.
 
 1. Go to [Vercel Dashboard](https://vercel.com/dashboard) and click **Add New...** ➔ **Project**.
 2. Select your repository: **`Nandhakishore-A/Biteora`**.
-3. Under **Project Name**, enter: `biteora-backend` (or your choice).
+3. Under **Project Name**, enter: `biteorabackend`.
 4. In **Root Directory**, click **Edit** and select **`backend`**.
 5. Framework Preset: **Other**.
 6. Expand **Environment Variables** and add:
 
-| Key | Example / Recommended Value | Description |
+| Key | Value | Description |
 | :--- | :--- | :--- |
-| `MONGODB_URI` | `mongodb+srv://nandhakishore252_db_user:1KUiKaVg7dKstxFM@cluster0.k07nk6k.mongodb.net/biteora?retryWrites=true&w=majority` | Your MongoDB Atlas connection string |
+| `MONGODB_URI` | `mongodb+srv://nandhakishore252_db_user:1KUiKaVg7dKstxFM@cluster0.k07nk6k.mongodb.net/biteora?retryWrites=true&w=majority` | MongoDB Atlas URI |
 | `JWT_SECRET` | `biteora_super_jwt_secret_key_2026_secure_random` | Secret key for signing customer JWT tokens |
 | `ADMIN_SECRET_KEY` | `biteora_admin_secret_key_2026` | Admin authentication secret key |
 | `ADMIN_PASSWORD` | `BiteoraAdmin2026!` | Admin one-click login password |
@@ -43,14 +43,14 @@ Deploy the backend first so you have its live production URL (e.g., `https://bit
 | `ADMIN_URL` | `https://biteora-admin.vercel.app` | Deployed admin dashboard URL |
 
 7. Click **Deploy**.
-8. Once finished, verify by visiting `https://your-backend.vercel.app/api/health`.
+8. Once finished, verify by visiting `https://biteorabackend.vercel.app/api/health`.
 
 ---
 
 ## 2. Deploy the Customer Storefront
 
 1. In Vercel, click **Add New...** ➔ **Project** and select **`Nandhakishore-A/Biteora`**.
-2. Under **Project Name**, enter: `biteora-app`.
+2. Under **Project Name**, enter: `biteora-frontend`.
 3. In **Root Directory**, click **Edit** and select **`frontend`**.
 4. Framework Preset: **Vite** (auto-detected).
 5. Build Command: `npm run build` (default).
@@ -59,7 +59,7 @@ Deploy the backend first so you have its live production URL (e.g., `https://bit
 
 | Key | Value |
 | :--- | :--- |
-| `VITE_API_URL` | `https://your-backend.vercel.app` *(URL from Step 1)* |
+| `VITE_API_URL` | `https://biteorabackend.vercel.app` |
 
 8. Click **Deploy**.
 9. The included `frontend/vercel.json` automatically ensures all client-side routes (like `/order`, `/myorders`, `/verify`) resolve without 404 errors.
@@ -78,7 +78,7 @@ Deploy the backend first so you have its live production URL (e.g., `https://bit
 
 | Key | Value |
 | :--- | :--- |
-| `VITE_API_URL` | `https://your-backend.vercel.app` *(URL from Step 1)* |
+| `VITE_API_URL` | `https://biteorabackend.vercel.app` |
 
 8. Click **Deploy**.
 9. The included `admin/vercel.json` provides seamless Single Page Application routing for `/dashboard`, `/add`, `/list`, and `/orders`.
@@ -89,7 +89,7 @@ Deploy the backend first so you have its live production URL (e.g., `https://bit
 
 The codebase includes pre-configured routing files:
 
-- [`frontend/vercel.json`](file:///c:/mern_project/FeastDash/frontend/vercel.json) — Rewrites all SPA paths to `/index.html`.
-- [`admin/vercel.json`](file:///c:/mern_project/FeastDash/admin/vercel.json) — Rewrites admin paths to `/index.html`.
-- [`backend/vercel.json`](file:///c:/mern_project/FeastDash/backend/vercel.json) & [`backend/api/index.js`](file:///c:/mern_project/FeastDash/backend/api/index.js) — Routes API traffic to the serverless Express engine.
-- [`vercel.json`](file:///c:/mern_project/FeastDash/vercel.json) — Top-level fallback for one-click root deployments.
+- `frontend/vercel.json` — Rewrites all SPA paths to `/index.html`.
+- `admin/vercel.json` — Rewrites admin paths to `/index.html`.
+- `backend/vercel.json` & `backend/api/index.js` — Routes API traffic to the serverless Express engine.
+- `vercel.json` — Top-level fallback for one-click root deployments.

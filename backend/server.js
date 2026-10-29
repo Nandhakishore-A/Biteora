@@ -83,7 +83,7 @@ const swaggerOptions = {
                     type: "apiKey",
                     in: "header",
                     name: "token",
-                    description: "Legacy FeastDash auth token"
+                    description: "Biteora auth token"
                 }
             }
         }
