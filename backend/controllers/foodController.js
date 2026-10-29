@@ -25,7 +25,7 @@ const uploadToCloudinary = (fileBuffer) => {
 // Add food item
 const addFood = async (req, res) => {
     try {
-        const { name, description, price, category } = req.body;
+        const { name, description, price, category, isVeg, prepTime, calories, rating } = req.body;
 
         if (!name || !description || price === undefined || !category) {
             return res.status(400).json({
@@ -58,7 +58,11 @@ const addFood = async (req, res) => {
             category: category.trim(),
             image: uploadResult.secure_url,
             cloudinaryPublicId: uploadResult.public_id,
-            isAvailable: true
+            isAvailable: true,
+            isVeg: isVeg !== undefined ? (String(isVeg) === "true" || isVeg === true) : true,
+            prepTime: prepTime ? String(prepTime).trim() : "20-25 mins",
+            calories: calories ? String(calories).trim() : "350 kcal",
+            rating: rating ? Number(rating) : 4.8
         });
 
         await food.save();
@@ -89,7 +93,7 @@ const updateFood = async (req, res) => {
             return res.status(404).json({ success: false, message: "Food item not found" });
         }
 
-        const { name, description, price, category, isAvailable } = req.body;
+        const { name, description, price, category, isAvailable, isVeg, prepTime, calories, rating } = req.body;
 
         if (name) food.name = name.trim();
         if (description) food.description = description.trim();
@@ -104,6 +108,12 @@ const updateFood = async (req, res) => {
         if (isAvailable !== undefined) {
             food.isAvailable = String(isAvailable) === "true" || isAvailable === true;
         }
+        if (isVeg !== undefined) {
+            food.isVeg = String(isVeg) === "true" || isVeg === true;
+        }
+        if (prepTime) food.prepTime = String(prepTime).trim();
+        if (calories) food.calories = String(calories).trim();
+        if (rating !== undefined) food.rating = Number(rating);
 
         if (req.file && req.file.buffer) {
             const uploadResult = await uploadToCloudinary(req.file.buffer);

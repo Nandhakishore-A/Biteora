@@ -33,6 +33,24 @@ const foodSchema = new mongoose.Schema(
         isAvailable: {
             type: Boolean,
             default: true
+        },
+        isVeg: {
+            type: Boolean,
+            default: true
+        },
+        prepTime: {
+            type: String,
+            default: "20-25 mins",
+            trim: true
+        },
+        calories: {
+            type: String,
+            default: "350 kcal",
+            trim: true
+        },
+        rating: {
+            type: Number,
+            default: 4.8
         }
     },
     {
