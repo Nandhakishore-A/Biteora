@@ -26,6 +26,35 @@ A high-performance, industry-level food delivery platform built with the **MERN*
 
 ---
 
+## 📖 About Biteora
+
+**Biteora** is a contemporary full-stack food ordering and delivery management ecosystem engineered to bridge the gap between hungry food lovers and modern restaurant kitchens. Designed with a clean, mobile-first aesthetic and a lightning-fast cloud backend, Biteora delivers an effortless dining experience from discovery to delivery.
+
+### 🎯 The Vision
+Modern food delivery platforms often suffer from cluttered interfaces, sluggish mobile performance, and fragile administrative workflows. Biteora was built from the ground up to solve these challenges through:
+- **Intuitive Visual Discovery**: Clean layout inspired by top food applications, featuring instant dish search, dynamic category carousels, diet tags, and live price calculations.
+- **Operator-First Control**: A dedicated, real-time administrative suite giving restaurant managers instantaneous oversight into their active prep queue, revenue velocity, and menu catalogs.
+- **Enterprise-Grade Security & Privacy**: Server-authoritative price validation, tamper-proof billing calculations, cryptographic webhook verifications, and isolated environment configurations that keep database credentials and secrets strictly private.
+
+### 🌟 Key Pillars
+
+1. **Customer Storefront (`frontend`)**
+   - **Hero Discovery Section**: Eye-catching visuals, promotional discount badges (e.g. *BITE10* for 10% off), delivery address switcher, and instantaneous live search across names, ingredients, and categories.
+   - **Frictionless Ordering**: Interactive cart drawers, dynamic quantity controllers, and transparent pricing with itemized subtotal, delivery charges, and promo calculations.
+   - **Real-Time Order Tracking**: Multi-stage progress indicators (`Order Confirmed` ➔ `Preparing in Kitchen` ➔ `Out for Delivery` ➔ `Delivered`) giving customers complete transparency over their meals.
+
+2. **Restaurant Operations Center (`admin`)**
+   - **Live Metric Dashboards**: High-level KPIs tracking Gross Revenue, Total Order Count, Published Menu items, and Average Kitchen Prep Times.
+   - **Live Order Pipeline**: Filterable views by order lifecycle stage (*All*, *Processing*, *Out for Delivery*, *Delivered*) with inline status transitions that instantly reflect on customer devices.
+   - **Cloud-Synced Menu Management**: Seamless addition and modification of food dishes, powered by Cloudinary streaming for high-definition dish photography.
+
+3. **Cloud-Native Serverless Engine (`backend`)**
+   - **Zero Cold-Start Lag**: Intelligent Mongoose connection pooling and lazy reconnection middleware engineered specifically for Vercel serverless execution.
+   - **Resilient Fallback Catalog**: High-availability architecture ensuring catalog availability and uptime even during network transitions.
+   - **Comprehensive OpenAPI 3.0 Documentation**: Fully documented interactive Swagger specification accessible right from the browser.
+
+---
+
 ## ⚡ Engineering Highlights & Features
 
 - 🥗 **Interactive Customer Experience**: Dynamic hero banner with dish search pill, category chips, 10% discount promo badge, and one-click add to cart.
@@ -89,35 +118,6 @@ Biteora/
 ├── package.json            # Root monorepo workspace configuration
 ├── vercel.json             # Root fallback build definition
 └── README.md
-```
-
----
-
-## 🔑 Environment Variables
-
-### Backend (`backend/.env`)
-
-```env
-PORT=4000
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.k07nk6k.mongodb.net/biteora?retryWrites=true&w=majority
-JWT_SECRET=biteora_super_jwt_secret_key_2026_secure_random
-ADMIN_SECRET_KEY=biteora_admin_secret_key_2026
-ADMIN_PASSWORD=BiteoraAdmin2026!
-STRIPE_SECRET_KEY=sk_test_your_stripe_secret
-STRIPE_WEBHOOK_SECRET=whsec_your_stripe_webhook_secret
-FRONTEND_URL=https://biteora-frontend.vercel.app
-ADMIN_URL=https://biteora-admin.vercel.app
-MAX_UPLOAD_SIZE_BYTES=2097152
-CLOUDINARY_CLOUD_NAME=zsfupefr
-CLOUDINARY_API_KEY=956281599364653
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-CLOUDINARY_FOLDER=mern_stack_project_storage/Biteora
-```
-
-### Customer Frontend (`frontend/.env`) & Admin (`admin/.env`)
-
-```env
-VITE_API_URL=https://biteorabackend.vercel.app
 ```
 
 ---
@@ -186,19 +186,16 @@ All three applications are continuously deployed on **Vercel** via GitHub integr
 - **Framework Preset:** `Other`
 - **Production URL:** [https://biteorabackend.vercel.app/](https://biteorabackend.vercel.app/)
 - **Health Check:** [https://biteorabackend.vercel.app/api/health](https://biteorabackend.vercel.app/api/health)
-- **Environment Variables:** `MONGODB_URI`, `JWT_SECRET`, `ADMIN_SECRET_KEY`, `ADMIN_PASSWORD`, `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`, `CLOUDINARY_FOLDER`, `FRONTEND_URL`, `ADMIN_URL`.
 
 ### 2. Customer Frontend (`frontend/`)
 - **Vercel Root Directory:** `frontend`
 - **Framework Preset:** `Vite`
 - **Production URL:** [https://biteora-frontend.vercel.app/](https://biteora-frontend.vercel.app/)
-- **Environment Variable:** `VITE_API_URL = https://biteorabackend.vercel.app`
 
 ### 3. Admin Management Dashboard (`admin/`)
 - **Vercel Root Directory:** `admin`
 - **Framework Preset:** `Vite`
 - **Production URL:** [https://biteora-admin.vercel.app/](https://biteora-admin.vercel.app/)
-- **Environment Variable:** `VITE_API_URL = https://biteorabackend.vercel.app`
 
 ---
 

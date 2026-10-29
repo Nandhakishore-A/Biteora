@@ -31,13 +31,13 @@ Deploy the backend first so you have its live production URL (`https://biteoraba
 
 | Key | Value | Description |
 | :--- | :--- | :--- |
-| `MONGODB_URI` | `mongodb+srv://nandhakishore252_db_user:1KUiKaVg7dKstxFM@cluster0.k07nk6k.mongodb.net/biteora?retryWrites=true&w=majority` | MongoDB Atlas URI |
-| `JWT_SECRET` | `biteora_super_jwt_secret_key_2026_secure_random` | Secret key for signing customer JWT tokens |
-| `ADMIN_SECRET_KEY` | `biteora_admin_secret_key_2026` | Admin authentication secret key |
-| `ADMIN_PASSWORD` | `BiteoraAdmin2026!` | Admin one-click login password |
-| `CLOUDINARY_CLOUD_NAME` | `zsfupefr` | Cloudinary cloud name |
-| `CLOUDINARY_API_KEY` | `956281599364653` | Cloudinary API Key |
-| `CLOUDINARY_API_SECRET` | `UJ5UEJgFVt17dwgd4vAK3YQ_6HM` | Cloudinary Secret Key |
+| `MONGODB_URI` | `mongodb+srv://<username>:<password>@cluster0.k07nk6k.mongodb.net/biteora?retryWrites=true&w=majority` | Your MongoDB Atlas connection URI |
+| `JWT_SECRET` | `your_secure_random_jwt_secret` | Secret key for signing customer JWT tokens |
+| `ADMIN_SECRET_KEY` | `your_secure_admin_secret_key` | Admin authentication secret key |
+| `ADMIN_PASSWORD` | `your_admin_login_password` | Admin login password |
+| `CLOUDINARY_CLOUD_NAME` | `your_cloudinary_cloud_name` | Cloudinary cloud name |
+| `CLOUDINARY_API_KEY` | `your_cloudinary_api_key` | Cloudinary API Key |
+| `CLOUDINARY_API_SECRET` | `your_cloudinary_api_secret` | Cloudinary Secret Key |
 | `CLOUDINARY_FOLDER` | `mern_stack_project_storage/Biteora` | Storage folder |
 | `FRONTEND_URL` | `https://biteora-frontend.vercel.app` | Deployed customer storefront URL |
 | `ADMIN_URL` | `https://biteora-admin.vercel.app` | Deployed admin dashboard URL |
